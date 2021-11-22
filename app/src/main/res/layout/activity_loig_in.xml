@@ -72,7 +72,7 @@
         android:id="@+id/register"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/loginbtm"
-        android:text="Don't have an account?"
+        android:text="Want an account?"
         />
     <TextView
         android:id="@+id/clickRegister"
