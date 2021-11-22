@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainbackground"
+    tools:context=".RegisterActivity">
+
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="405dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="69dp"
+        android:background="@drawable/logo"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="60dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="190dp"
+        android:background="#F0F8FF"
+        android:drawableLeft="@drawable/ic_outline_email_24"
+        android:drawablePadding="20dp"
+        android:padding="20dp"
+        android:hint="Email"
+        android:id="@+id/txemail"
+
+
+        />
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txemail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="#F0F8FF"
+        android:drawableLeft="@drawable/ic_outline_account_circle_24"
+        android:drawablePadding="20dp"
+        android:hint="Username"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="#F0F8FF"
+        android:drawablePadding="20dp"
+        android:drawableLeft="@drawable/ic_outline_lock_24"
+        android:hint="Password"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        />
+
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:id="@+id/amka"
+        android:drawablePadding="20dp"
+        android:padding="20dp"
+        android:background="#F0F8FF"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/ic_baseline_domain_verification_24"
+        android:hint="AMKA"
+        />
+
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerbtm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amka"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#5d8aa6"
+        android:text="Register" />
+
+
+</RelativeLayout>
