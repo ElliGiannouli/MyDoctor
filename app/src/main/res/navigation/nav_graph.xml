@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/calendarFragment2">
+    <fragment
+        android:id="@+id/calendarFragment2"
+        android:name="com.example.mydoctor.CalendarFragment"
+        android:label="fragment_calendar_2"
+        tools:layout="@layout/fragment_calendar_2" />
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.example.mydoctor.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" />
+</navigation>
