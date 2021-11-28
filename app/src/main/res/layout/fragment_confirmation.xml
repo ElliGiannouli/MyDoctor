@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="sans-serif-condensed"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:layout_marginTop="40dp"
         android:text="You booked an appointment with\n Doctor ${doctor_name}\n on ${appointment_date}\n at ${appointment_time}"
         android:textStyle="bold" />
