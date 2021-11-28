@@ -3,15 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/calendarFragment2">
+    app:startDestination="@id/profileFragment">
     <fragment
         android:id="@+id/calendarFragment2"
         android:name="com.example.mydoctor.CalendarFragment"
         android:label="fragment_calendar_2"
-        tools:layout="@layout/fragment_calendar_2" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment2_to_confirmationFragment2"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/confirmationFragment"
         android:name="com.example.mydoctor.ConfirmationFragment"
         android:label="fragment_confirmation"
         tools:layout="@layout/fragment_confirmation" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.mydoctor.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

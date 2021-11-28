@@ -22,7 +22,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/amka"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/login"
@@ -32,7 +32,8 @@
         android:background="#F0F8FF"
         android:drawableLeft="@drawable/ic_outline_account_circle_24"
         android:drawablePadding="20dp"
-        android:hint="Username"
+        android:hint="AMKA"
+        android:inputType="number"
         android:padding="20dp"
         android:textColor="@color/black"
         />
@@ -41,13 +42,14 @@
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/username"
+        android:layout_below="@id/amka"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="10dp"
         android:background="#F0F8FF"
         android:drawablePadding="20dp"
         android:drawableLeft="@drawable/ic_outline_lock_24"
         android:hint="Password"
+        android:inputType="textPassword"
         android:padding="20dp"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
