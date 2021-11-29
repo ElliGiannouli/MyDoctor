@@ -74,7 +74,7 @@
         android:id="@+id/register"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/loginbtm"
-        android:text="Don't have an account?"
+        android:text="You don't have an account?"
         />
     <TextView
         android:id="@+id/clickRegister"
@@ -82,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/register"
         android:layout_centerHorizontal="true"
+        android:textSize="20dp"
         android:text="Register Here"
 
         />
