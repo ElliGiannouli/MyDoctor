@@ -1,5 +1,6 @@
 package com.example.mydoctor
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,12 +15,19 @@ import com.example.mydoctor.databinding.FragmentCalendarBinding
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import kotlin.text.Typography.times
+import android.app.Activity
+import android.util.Log
+import android.widget.Button
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_calendar.*
 
 
 
 
 
-class CalendarFragment : Fragment() {
+
+class CalendarFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentCalendarBinding
 
@@ -27,15 +35,6 @@ class CalendarFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         setHasOptionsMenu(true)
-
-//        binding.bookADateButton = activity!!.supportFragmentManager.beginTransaction()
-//            .replace(R.id.fragment_confirmation, ProfileFragment()).commit()
-
-//        val bookDateButton = binding.bookADateButton as TextView
-//        bookDateButton.setOnClickListener(){
-//            val intent = Intent(this, ConfirmationFragment::class.java);
-//            startActivity(intent)
-
     }
 
     override fun onCreateView(
@@ -47,18 +46,28 @@ class CalendarFragment : Fragment() {
         binding = FragmentCalendarBinding.inflate(layoutInflater)
 
         val itemsDates = resources.getStringArray(R.array.dates)
-        val adapterDate = ArrayAdapter(requireContext(),list_dates, itemsDates)
+        val adapterDate = ArrayAdapter(requireContext(), list_dates, itemsDates)
         binding.autocompleteTextViewDateDropdown.setAdapter(adapterDate)
 
         val itemsTimes = resources.getStringArray(R.array.times)
-        val adapterTime = ArrayAdapter(requireContext(),list_times,itemsTimes)
+        val adapterTime = ArrayAdapter(requireContext(), list_times, itemsTimes)
         binding.autocompleteTextViewTimeDropdown.setAdapter(adapterTime)
+
+        binding.bookADateButton.setOnClickListener() {
+            val fragment: Fragment = CalendarFragment()
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.confirmation_fragment, fragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
 
         return binding.root
 
     }
 
-
-
+    override fun onClick(v: View?) {
+        TODO("Not yet implemented")
+    }
 
 }
