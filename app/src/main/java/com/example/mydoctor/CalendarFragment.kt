@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.mydoctor.R.layout.list_dates
 import com.example.mydoctor.R.layout.list_times
-import com.example.mydoctor.databinding.FragmentCalendarBinding
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import kotlin.text.Typography.times
@@ -21,15 +20,12 @@ import android.widget.Button
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_calendar.*
+import com.example.mydoctor.databinding.FragmentCalendarBinding as FragmentCalendarBinding1
 
 
+class CalendarFragment : Fragment() {
 
-
-
-
-class CalendarFragment : Fragment(), View.OnClickListener {
-
-    private lateinit var binding: FragmentCalendarBinding
+    private lateinit var binding: FragmentCalendarBinding1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +39,7 @@ class CalendarFragment : Fragment(), View.OnClickListener {
     ): View? {
 
         super.onCreate(savedInstanceState)
-        binding = FragmentCalendarBinding.inflate(layoutInflater)
+        binding = FragmentCalendarBinding1.inflate(layoutInflater)
 
         val itemsDates = resources.getStringArray(R.array.dates)
         val adapterDate = ArrayAdapter(requireContext(), list_dates, itemsDates)
@@ -53,21 +49,24 @@ class CalendarFragment : Fragment(), View.OnClickListener {
         val adapterTime = ArrayAdapter(requireContext(), list_times, itemsTimes)
         binding.autocompleteTextViewTimeDropdown.setAdapter(adapterTime)
 
-        binding.bookADateButton.setOnClickListener() {
-            val fragment: Fragment = CalendarFragment()
-            val fragmentManager = requireActivity().supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.confirmation_fragment, fragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+        binding.bookADateButton.setOnClickListener {
+            val intent = Intent(requireContext(),ConfirmationActivity::class.java)
+            intent.putExtra("Confirmation","Confirmation Value")
+            startActivity(intent)
         }
+
+//        binding.bookADateButton.setOnClickListener() {
+//            val fragment: Fragment = CalendarFragment()
+//            val fragmentManager = requireActivity().supportFragmentManager
+//            val fragmentTransaction = fragmentManager.beginTransaction()
+//            fragmentTransaction.replace(R.id.confirmation_fragment, fragment)
+//            fragmentTransaction.addToBackStack(null)
+//            fragmentTransaction.commit()
+//        }
 
         return binding.root
 
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
-    }
 
 }

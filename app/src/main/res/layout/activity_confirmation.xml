@@ -7,7 +7,7 @@
     android:background="@drawable/mainbackground"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ConfirmationFragment">
+    tools:context=".ConfirmationActivity">
 
     <ImageView
         android:layout_width="168dp"
@@ -18,13 +18,13 @@
 
     <ImageView
         android:id="@+id/icon_green_tick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="187dp"
+        android:layout_height="185dp"
         android:layout_gravity="center"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:orientation="vertical"
         app:srcCompat="@drawable/green_tick" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="sans-serif-condensed"
-        android:textSize="30sp"
+        android:textSize="23sp"
         android:layout_marginTop="40dp"
         android:text="You booked an appointment with\n Doctor ${doctor_name}\n on ${appointment_date}\n at ${appointment_time}"
         android:textStyle="bold" />
