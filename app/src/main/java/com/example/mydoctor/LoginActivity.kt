@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val BASE_URL = "https://docappmy.herokuapp.com/mydoctor/user/"
 
-class LoigInActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -34,18 +34,16 @@ class LoigInActivity : AppCompatActivity() {
 //
 //        }
 
-        //val amkatextview = amka.text.toString().trim()
-        //val passwordtextview = password.text.toString().trim()
         val loginbutton = loginbtm
-        var amka1 = ""
-        var password1 = ""
+        var amka = ""
+        var password = ""
 
         loginbutton.setOnClickListener {
 
-            amka1 = amka_edit_text.text.toString().trim()
-            password1 = password_edit_text.text.toString().trim()
+            amka = amka_edit_text.text.toString().trim()
+            password = password_edit_text.text.toString().trim()
 
-            Log.d("values","The AMKA is: $amka1, The password is: $password1")
+            Log.d("values","The AMKA is: $amka, The password is: $password")
 
 
 
@@ -55,7 +53,7 @@ class LoigInActivity : AppCompatActivity() {
             .build()
             .create(ApiInterface::class.java)
 
-        val retrofitData = retrofitBuilder.loginUser(LoginRequest(amka1,password1))
+        val retrofitData = retrofitBuilder.loginUser(LoginRequest(amka,password))
 
         retrofitData.enqueue(object:Callback<LoginResponse>{
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
@@ -65,7 +63,7 @@ class LoigInActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Toast.makeText(this@LoigInActivity,"FailureLogin",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity,"FailureLogin",Toast.LENGTH_LONG).show()
                 Log.d("loginerror","loginerror: ${t.localizedMessage} - ${t.stackTrace} - ${t.message}")
             }
 
