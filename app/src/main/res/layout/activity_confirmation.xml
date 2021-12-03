@@ -34,7 +34,26 @@
         android:fontFamily="sans-serif-condensed"
         android:textSize="23sp"
         android:layout_marginTop="40dp"
-        android:text="You booked an appointment with\n Doctor ${doctor_name}\n on ${appointment_date}\n at ${appointment_time}"
+        android:textStyle="bold"
+        android:text="You booked an appointment with\n Doctor ${doctor_name}"
+         />
+    <TextView
+        android:id="@+id/booked_date_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="23sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/booked_time_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="23sp"
         android:textStyle="bold" />
+
 
 </LinearLayout>

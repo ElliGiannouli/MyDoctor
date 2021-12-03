@@ -27,49 +27,49 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-//        val loginbtm = findViewById<TextView>(R.id.loginbtm)
-//        loginbtm.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java);
-//            startActivity(intent)
+        val loginbtm = findViewById<TextView>(R.id.loginbtm)
+        loginbtm.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java);
+            startActivity(intent)
+
+        }
+
+//        val loginbutton = loginbtm
+//        var amka = ""
+//        var password = ""
 //
-//        }
-
-        val loginbutton = loginbtm
-        var amka = ""
-        var password = ""
-
-        loginbutton.setOnClickListener {
-
-            amka = amka_edit_text.text.toString().trim()
-            password = password_edit_text.text.toString().trim()
-
-            Log.d("values","The AMKA is: $amka, The password is: $password")
-
-
-
-        val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .build()
-            .create(ApiInterface::class.java)
-
-        val retrofitData = retrofitBuilder.loginUser(LoginRequest(amka,password))
-
-        retrofitData.enqueue(object:Callback<LoginResponse>{
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                val responseData = response.body()
-                Log.d("SuccessLogin","The response is: $responseData")
-
-            }
-
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Toast.makeText(this@LoginActivity,"FailureLogin",Toast.LENGTH_LONG).show()
-                Log.d("loginerror","loginerror: ${t.localizedMessage} - ${t.stackTrace} - ${t.message}")
-            }
-
-        })
-
-
-    }
+//        loginbutton.setOnClickListener {
+//
+//            amka = amka_edit_text.text.toString().trim()
+//            password = password_edit_text.text.toString().trim()
+//
+//            Log.d("values","The AMKA is: $amka, The password is: $password")
+//
+//
+//
+//        val retrofitBuilder = Retrofit.Builder()
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .baseUrl(BASE_URL)
+//            .build()
+//            .create(ApiInterface::class.java)
+//
+//        val retrofitData = retrofitBuilder.loginUser(LoginRequest(amka,password))
+//
+//        retrofitData.enqueue(object:Callback<LoginResponse>{
+//            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+//                val responseData = response.body()
+//                Log.d("SuccessLogin","The response is: $responseData")
+//
+//            }
+//
+//            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+//                Toast.makeText(this@LoginActivity,"FailureLogin",Toast.LENGTH_LONG).show()
+//                Log.d("loginerror","loginerror: ${t.localizedMessage} - ${t.stackTrace} - ${t.message}")
+//            }
+//
+//        })
+//
+//
+//    }
     }
 }

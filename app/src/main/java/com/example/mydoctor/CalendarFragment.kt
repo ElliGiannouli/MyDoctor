@@ -61,10 +61,15 @@ class CalendarFragment : Fragment() {
 //                selectedValue = adapterDate.getItem(position)
 //            }
 
+
         binding.bookADateButton.setOnClickListener {
 
+            val chosen_date = autocomplete_text_view_date_dropdown.text.toString()
+            val chosen_time = autocomplete_text_view_time_dropdown.text.toString()
+
             val intent = Intent(requireContext(),ConfirmationActivity::class.java)
-            intent.putExtra("Confirmation", "Confirmation Value.")
+            intent.putExtra("date_confirmation", chosen_date)
+            intent.putExtra("time_confirmation",chosen_time)
             startActivity(intent)
         }
 

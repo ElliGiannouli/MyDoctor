@@ -21,7 +21,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".LoigInActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
