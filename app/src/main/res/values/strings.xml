@@ -10,6 +10,7 @@
     <string name="profile_tab">Profile</string>
     <string name="calendar_tab">Calendar</string>
     <string name="share_tab">Share</string>
+    <string name="share_prescriptions_diagnoses">SHARE PRESCRIPTIONS AND DIAGNOSES</string>
     <string-array name="doctors">
         <item>Panagiotis Papadopoulos</item>
         <item>Irini Markezou</item>

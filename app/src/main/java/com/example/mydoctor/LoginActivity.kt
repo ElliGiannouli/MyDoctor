@@ -1,6 +1,9 @@
 package com.example.mydoctor
 
+import android.accounts.AccountManager
 import android.content.Intent
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +15,7 @@ import com.example.mydoctor.models.LoginResponse
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 const val BASE_URL = "https://docappmy.herokuapp.com/mydoctor/user/"
 
@@ -59,7 +63,8 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 val responseData = response.body()
                 Log.d("SuccessLogin","The response is: $responseData")
-                //val intent = Intent(this@LoginActivity,)
+                val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                startActivity(intent)
 
             }
 
@@ -72,5 +77,6 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
+
     }
 }
