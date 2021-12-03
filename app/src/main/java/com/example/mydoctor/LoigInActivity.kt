@@ -13,61 +13,65 @@ import kotlinx.android.synthetic.main.activity_loig_in.*
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "https://192.168.2.4:3000/mydoctor/user/"
+const val BASE_URL = "https://docappmy.herokuapp.com/mydoctor/user/"
 
 class LoigInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loig_in)
 
-        val clickRegister = findViewById(R.id.clickRegister) as TextView
+        val clickRegister = findViewById<TextView>(R.id.clickRegister)
         clickRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java);
             startActivity(intent)
 
         }
 
-        val loginbtm = findViewById(R.id.loginbtm) as TextView
-        loginbtm.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java);
-            startActivity(intent)
+//        val loginbtm = findViewById<TextView>(R.id.loginbtm)
+//        loginbtm.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java);
+//            startActivity(intent)
+//
+//        }
 
-        }
+        //val amkatextview = amka.text.toString().trim()
+        //val passwordtextview = password.text.toString().trim()
+        val loginbutton = loginbtm
+        var amka1 = ""
+        var password1 = ""
 
-//        val amkatextview = amka.text.toString().trim()
-//        val passwordtextview = password.text.toString().trim()
-//        val loginbutton = loginbtm
-//        var amka = ""
-//        var password = ""
-//
-//        loginbutton.setOnClickListener {
-//            amka=amkatextview
-//            password=passwordtextview
-//
-//
-//
-//        val retrofitBuilder = Retrofit.Builder()
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .baseUrl(BASE_URL)
-//            .build()
-//            .create(ApiInterface::class.java)
-//
-//        val retrofitData = retrofitBuilder.loginUser(LoginRequest(amka,password))
-//
-//        retrofitData.enqueue(object:Callback<LoginResponse>{
-//            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-//                val responseData = response.body()
-//                Log.d("SuccessLogin","The response is: $responseData")
-//            }
-//
-//            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-//                Toast.makeText(this@LoigInActivity,"FailureLogin",Toast.LENGTH_LONG).show()
-//                Log.d("loginerror","loginerror: ${t.localizedMessage} - ${t.stackTrace} - ${t.message}")
-//            }
-//
-//        })
-//
-//
-//    }
+        loginbutton.setOnClickListener {
+
+            amka1 = amka_edit_text.text.toString().trim()
+            password1 = password_edit_text.text.toString().trim()
+
+            Log.d("values","The AMKA is: $amka1, The password is: $password1")
+
+
+
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiInterface::class.java)
+
+        val retrofitData = retrofitBuilder.loginUser(LoginRequest(amka1,password1))
+
+        retrofitData.enqueue(object:Callback<LoginResponse>{
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                val responseData = response.body()
+                Log.d("SuccessLogin","The response is: $responseData")
+
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Toast.makeText(this@LoigInActivity,"FailureLogin",Toast.LENGTH_LONG).show()
+                Log.d("loginerror","loginerror: ${t.localizedMessage} - ${t.stackTrace} - ${t.message}")
+            }
+
+        })
+
+
+    }
     }
 }

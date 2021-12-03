@@ -15,12 +15,16 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import kotlin.text.Typography.times
 import android.app.Activity
+import android.text.Editable
 import android.util.Log
 import android.widget.Button
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_calendar.*
 import com.example.mydoctor.databinding.FragmentCalendarBinding as FragmentCalendarBinding1
+import android.widget.AutoCompleteTextView
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
 
 
 class CalendarFragment : Fragment() {
@@ -49,9 +53,18 @@ class CalendarFragment : Fragment() {
         val adapterTime = ArrayAdapter(requireContext(), list_times, itemsTimes)
         binding.autocompleteTextViewTimeDropdown.setAdapter(adapterTime)
 
+//        var selectedValue: String? = null
+//
+//        (date_dropdown.editText as AutoCompleteTextView).onItemClickListener =
+//            OnItemClickListener { _, _, position, _ ->
+//                // this code block is called every time an item is clicked
+//                selectedValue = adapterDate.getItem(position)
+//            }
+
         binding.bookADateButton.setOnClickListener {
+
             val intent = Intent(requireContext(),ConfirmationActivity::class.java)
-            intent.putExtra("Confirmation","Confirmation Value")
+            intent.putExtra("Confirmation", "Confirmation Value.")
             startActivity(intent)
         }
 
