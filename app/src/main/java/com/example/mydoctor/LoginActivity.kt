@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.example.mydoctor.api.ApiInterface
 import com.example.mydoctor.models.LoginRequest
 import com.example.mydoctor.models.LoginResponse
-import kotlinx.android.synthetic.main.activity_loig_in.*
+import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -18,7 +18,7 @@ const val BASE_URL = "https://docappmy.herokuapp.com/mydoctor/user/"
 class LoigInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_loig_in)
+        setContentView(R.layout.activity_login)
 
         val clickRegister = findViewById<TextView>(R.id.clickRegister)
         clickRegister.setOnClickListener {
