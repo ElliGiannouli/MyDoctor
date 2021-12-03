@@ -24,19 +24,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_outline_account_circle_24"
-            android:text="Profile"
+            android:text="@string/profile_tab"
             />
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_outline_calendar_today_24"
-            android:text="Calendar"
+            android:text="@string/calendar_tab"
             />
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload"
-            android:icon="@drawable/ic_outline_cloud_upload_24"
+            android:text="@string/share_tab"
+            android:icon="@drawable/ic_baseline_share_24"
             />
 
     </com.google.android.material.tabs.TabLayout>

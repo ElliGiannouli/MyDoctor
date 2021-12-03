@@ -33,6 +33,30 @@
         android:textSize="24sp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/doctor_dropdown"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/choose_a_doctor"
+        android:textAlignment="center"
+        app:startIconDrawable="@drawable/ic_baseline_person_24">
+
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_text_view_doctor_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="none"
+
+        />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/date_dropdown"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
@@ -56,9 +80,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="55dp" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/time_dropdown"
@@ -83,7 +105,7 @@
 
     <View
         android:layout_width="0dp"
-        android:layout_height="55dp"/>
+        android:layout_height="45dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/book_a_date_button"
