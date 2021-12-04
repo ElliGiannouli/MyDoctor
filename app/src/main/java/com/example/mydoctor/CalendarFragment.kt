@@ -1,6 +1,5 @@
 package com.example.mydoctor
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,20 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.TextView
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import kotlin.text.Typography.times
-import android.app.Activity
-import android.text.Editable
-import android.util.Log
-import android.widget.Button
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_calendar.*
-import android.widget.AutoCompleteTextView
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemClickListener
 import com.example.mydoctor.R.layout.*
 import com.example.mydoctor.databinding.FragmentCalendarBinding
 
@@ -39,7 +25,7 @@ class CalendarFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         super.onCreate(savedInstanceState)
         binding = FragmentCalendarBinding.inflate(layoutInflater)
@@ -59,14 +45,14 @@ class CalendarFragment : Fragment() {
 
         binding.bookADateButton.setOnClickListener {
 
-            val chosen_doctor = autocomplete_text_view_doctor_dropdown.text.toString()
-            val chosen_date = autocomplete_text_view_date_dropdown.text.toString()
-            val chosen_time = autocomplete_text_view_time_dropdown.text.toString()
+            val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
+            val chosenDate = autocomplete_text_view_date_dropdown.text.toString()
+            val chosenTime = autocomplete_text_view_time_dropdown.text.toString()
 
             val intent = Intent(requireContext(),ConfirmationActivity::class.java)
-            intent.putExtra("doctor_confirmation",chosen_doctor)
-            intent.putExtra("date_confirmation", chosen_date)
-            intent.putExtra("time_confirmation",chosen_time)
+            intent.putExtra("doctor_confirmation",chosenDoctor)
+            intent.putExtra("date_confirmation", chosenDate)
+            intent.putExtra("time_confirmation",chosenTime)
             startActivity(intent)
         }
 
