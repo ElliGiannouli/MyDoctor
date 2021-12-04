@@ -13,9 +13,12 @@ import com.example.mydoctor.api.ApiInterface
 import com.example.mydoctor.models.LoginRequest
 import com.example.mydoctor.models.LoginResponse
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.amka_edit_text
+import kotlinx.android.synthetic.main.activity_register.*
 import org.json.JSONObject
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.Response as Response1
 
 
 const val BASE_URL = "https://docappmy.herokuapp.com/mydoctor/user/"
@@ -61,12 +64,23 @@ class LoginActivity : AppCompatActivity() {
         val retrofitData = retrofitBuilder.loginUser(LoginRequest(amka,password))
 
         retrofitData.enqueue(object:Callback<LoginResponse>{
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+            override fun onResponse(call: Call<LoginResponse>, response: Response1<LoginResponse>) {
                 val responseData = response.body()
-                Log.d("SuccessLogin","The response is: $responseData")
-//                val intent = Intent(this@LoginActivity,MainActivity::class.java)
-//                startActivity(intent)
+                val mypref = getSharedPreferences("mypref", MODE_PRIVATE)
+                val editor = mypref.edit()
+                editor.putString("TOKEN", responseData?.token)
+                editor.apply()
+                val tokenSave =  mypref.getString("TOKEN","")
 
+                if(!tokenSave.isNullOrEmpty()) {
+                    Toast.makeText(this@LoginActivity,"Data Saved",Toast.LENGTH_LONG).show()
+                    Log.d("SuccessLogin","The response is: $responseData")
+                    val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                    startActivity(intent)
+                }
+                else{
+                    Toast.makeText(this@LoginActivity,"Login Failed - provide correct credentials",Toast.LENGTH_LONG).show()
+                }
 
             }
 
@@ -81,4 +95,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     }
+
+
 }
