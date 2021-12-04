@@ -13,6 +13,7 @@ import com.example.mydoctor.api.ApiInterface
 import com.example.mydoctor.models.LoginRequest
 import com.example.mydoctor.models.LoginResponse
 import kotlinx.android.synthetic.main.activity_login.*
+import org.json.JSONObject
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -63,8 +64,9 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 val responseData = response.body()
                 Log.d("SuccessLogin","The response is: $responseData")
-                val intent = Intent(this@LoginActivity,MainActivity::class.java)
-                startActivity(intent)
+//                val intent = Intent(this@LoginActivity,MainActivity::class.java)
+//                startActivity(intent)
+
 
             }
 
