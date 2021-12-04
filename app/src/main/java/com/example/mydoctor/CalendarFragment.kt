@@ -41,7 +41,7 @@ class CalendarFragment : Fragment() {
         val itemsTimes = resources.getStringArray(R.array.times)
         val adapterTime = ArrayAdapter(requireContext(), list_times, itemsTimes)
         binding.autocompleteTextViewTimeDropdown.setAdapter(adapterTime)
-        
+
         binding.bookADateButton.setOnClickListener {
 
             val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
