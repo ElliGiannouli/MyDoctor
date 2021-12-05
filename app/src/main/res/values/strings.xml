@@ -16,7 +16,7 @@
     <string name="delete">Delete</string>
     <string name="upload_a_file">Upload a file</string>
     <string name="save">Save</string>
-    <string name="string_kode">string/kode</string>
+    <string name="string_code">Code</string>
     <string name="string_category">Category</string>
     <string name="string_isi">isi</string>
     <string-array name="doctors">
