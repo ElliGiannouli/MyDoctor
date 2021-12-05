@@ -17,8 +17,8 @@
     <string name="upload_a_file">Upload a file</string>
     <string name="save">Save</string>
     <string name="string_kode">string/kode</string>
-    <string name="string_kategori">string/kategori</string>
-    <string name="string_isi">string/isi</string>
+    <string name="string_category">Category</string>
+    <string name="string_isi">isi</string>
     <string-array name="doctors">
         <item>Panagiotis Papadopoulos</item>
         <item>Irini Markezou</item>
