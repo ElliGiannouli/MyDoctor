@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mainbackground"
-    tools:context="UploadFragment">
+    tools:context=".PrescriptionsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -19,7 +19,7 @@
         android:layout_height="25dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="105dp"
-        android:text="@string/share_prescriptions_diagnoses"
+        android:text="@string/share_prescriptions"
         android:textAlignment="center" />
 
     <ImageView

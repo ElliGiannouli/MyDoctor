@@ -15,7 +15,8 @@ class TabPageAdapter (activity:FragmentActivity, private val tabCount: Int): Fra
 
             0 -> ProfileFragment()
             1 -> CalendarFragment()
-            2 -> UploadFragment()
+            2 -> DiagnosesFragment()
+            3 -> PrescriptionsFragment()
             else -> ProfileFragment()
         }
 

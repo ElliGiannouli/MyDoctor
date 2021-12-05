@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.frame_layout.*
 
-class UploadFragment : Fragment() {
+class PrescriptionsFragment: Fragment() {
 
 
 

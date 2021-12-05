@@ -9,8 +9,10 @@
     <string name="book_a_date">Book a date</string>
     <string name="profile_tab">Profile</string>
     <string name="calendar_tab">Calendar</string>
-    <string name="share_tab">Share</string>
-    <string name="share_prescriptions_diagnoses">SHARE PRESCRIPTIONS AND DIAGNOSES</string>
+    <string name="diagnoses_tab">Diagnoses</string>
+    <string name="prescriptions_tab">Prescriptions</string>
+    <string name="share_prescriptions">SHARE PRESCRIPTIONS</string>
+    <string name="share_diagnoses">SHARE DIAGNOSES</string>
     <string name="delete">Delete</string>
     <string name="upload_a_file">Upload a file</string>
     <string name="save">Save</string>
