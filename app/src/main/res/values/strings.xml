@@ -5,6 +5,7 @@
     <string name="choose_a_date">Choose a date</string>
     <string name="choose_a_time">Choose a time</string>
     <string name="choose_a_doctor">Choose a doctor</string>
+    <string name="choose_a_hospital">Choose a hospital</string>
     <string name="calendar">CALENDAR</string>
     <string name="book_a_date">Book a date</string>
     <string name="profile_tab">Profile</string>
@@ -19,6 +20,28 @@
     <string name="string_code">Code</string>
     <string name="string_category">Category</string>
     <string name="string_isi">isi</string>
+    <string-array name="hospitals">
+        <item>Ippokrateio General Hospital of Athens</item>
+        <item>Evangelismos General Hospital of Athens</item>
+        <item>Alexandra General Hospital of Athens</item>
+        <item>"Agia Eleni Spiliopouleio" Pathology Hospital of Athens</item>
+        <item>"Agios Savvas" General Cancer Hospital of Athens</item>
+        <item>General Hospital of Thessaloniki "St. Demetrios"</item>
+        <item>Ippokrateio General Hospital of Thessaloniki</item>
+        <item>AHEPA Hospital</item>
+        <item>"Theagenio" Cancer Hospital of Thessaloniki</item>
+        <item>General Hospital of Thessaloniki "G.Gennimatas"</item>
+        <item>Patras General Hospital "Agios Andreas"</item>
+        <item>"Karamandaneio" Prefecture Children Hospital of Patras</item>
+        <item>General University Hospital of Patras</item>
+        <item>Venizelio Hospital of Heraclion</item>
+        <item>Asklepeion Crete</item>
+        <item>"Koutlimbaneio and Triantafylleio" General Hospital of Larissa</item>
+        <item>"Hippocrates" Maternal Hospital of Larissa</item>
+        <item>General Hospital of Veria</item>
+        <item>General Hospital of Tripoli Panarkadiko "Evangelistria"</item>
+        <item>General Hospital of Kavala</item>
+    </string-array>
     <string-array name="doctors">
         <item>Panagiotis Papadopoulos</item>
         <item>Irini Markezou</item>

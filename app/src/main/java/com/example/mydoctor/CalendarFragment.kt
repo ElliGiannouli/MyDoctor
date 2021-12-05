@@ -30,6 +30,10 @@ class CalendarFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding = FragmentCalendarBinding.inflate(layoutInflater)
 
+        val itemsHospitals = resources.getStringArray(R.array.hospitals)
+        val adapterHospitals = ArrayAdapter(requireContext(),list_hospitals,itemsHospitals)
+        binding.autocompleteTextViewHospitalDropdown.setAdapter(adapterHospitals)
+
         val itemsDoctors = resources.getStringArray(R.array.doctors)
         val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, itemsDoctors)
         binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
@@ -44,11 +48,13 @@ class CalendarFragment : Fragment() {
 
         binding.bookADateButton.setOnClickListener {
 
+            val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
             val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
             val chosenDate = autocomplete_text_view_date_dropdown.text.toString()
             val chosenTime = autocomplete_text_view_time_dropdown.text.toString()
 
             val intent = Intent(requireContext(),ConfirmationActivity::class.java)
+            intent.putExtra("hospital_confirmation",chosenHospital)
             intent.putExtra("doctor_confirmation",chosenDoctor)
             intent.putExtra("date_confirmation", chosenDate)
             intent.putExtra("time_confirmation",chosenTime)
