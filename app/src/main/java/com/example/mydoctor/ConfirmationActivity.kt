@@ -26,7 +26,7 @@ class ConfirmationActivity : AppCompatActivity() {
         val bookedTime = intent.getStringExtra("time_confirmation").toString()
 
         bookedHospitalView.text = "at $bookedHospital"
-        bookedDoctorView.text = "Doctor $bookedDoctor"
+        bookedDoctorView.text = "with Doctor $bookedDoctor"
         bookedDateView.text = "on $bookedDate"
         bookedTimeView.text = "at $bookedTime"
     }

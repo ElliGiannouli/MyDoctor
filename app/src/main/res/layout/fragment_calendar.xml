@@ -9,9 +9,6 @@
     android:orientation="vertical"
     tools:context=".CalendarFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
     <ImageView
         android:layout_width="168dp"
         android:layout_height="99dp"
@@ -26,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginVertical="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/calendar"
         android:textAlignment="center"
@@ -39,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/choose_a_hospital"
         android:textAlignment="center"
@@ -126,7 +123,7 @@
 
     <View
         android:layout_width="0dp"
-        android:layout_height="45dp"/>
+        android:layout_height="35dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/book_a_date_button"

@@ -43,7 +43,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             itemView.setOnClickListener {
                 val position: Int = getAdapterPosition()
                 val context = itemView.context
-                val intent = Intent(context, UploadFragment::class.java).apply {
+                val intent = Intent(context, DiagnosesFragment::class.java).apply {
                     putExtra("NUMBER", position)
                     putExtra("CODE", itemKode.text)
                     putExtra("CATEGORY", itemKategori.text)

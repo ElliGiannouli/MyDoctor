@@ -36,13 +36,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/diagnoses_tab"
-            android:icon="@drawable/ic_baseline_share_24"
+            android:icon="@drawable/ic_baseline_search_24"
             />
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/prescriptions_tab"
-            android:icon="@drawable/ic_baseline_share_24"
+            android:icon="@drawable/ic_baseline_medical_services_24"
             />
 
     </com.google.android.material.tabs.TabLayout>
