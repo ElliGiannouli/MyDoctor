@@ -31,17 +31,14 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var itemKode: TextView
-        var itemKategori: TextView
-        var itemIsi: TextView
+        var itemKode: TextView = itemView.findViewById(R.id.kode)
+        var itemKategori: TextView = itemView.findViewById(R.id.kategor)
+        var itemIsi: TextView = itemView.findViewById(R.id.isi)
 
         init {
-            itemKode = itemView.findViewById(R.id.kode)
-            itemKategori = itemView.findViewById(R.id.kategor)
-            itemIsi = itemView.findViewById(R.id.isi)
 
             itemView.setOnClickListener {
-                val position: Int = getAdapterPosition()
+                val position: Int = adapterPosition
                 val context = itemView.context
                 val intent = Intent(context, DiagnosesFragment::class.java).apply {
                     putExtra("NUMBER", position)
