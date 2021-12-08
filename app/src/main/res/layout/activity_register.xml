@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainbackground"
+    tools:context=".RegisterActivity">
+
+
+    <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="20dp"
+                android:text="Please fill your personal data below"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/amkaRegisterText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#F0F8FF"
+                android:drawableLeft="@drawable/ic_outline_email_24"
+                android:drawablePadding="20dp"
+                android:hint="AMKA"
+                android:padding="20dp" />
+
+            <EditText
+                android:id="@+id/passwordRegisterText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/amkaRegisterText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="#F0F8FF"
+                android:drawableLeft="@drawable/ic_outline_lock_24"
+                android:drawablePadding="20dp"
+                android:hint="Password"
+                android:padding="20dp"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/firstNameRegisterText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/passwordRegisterText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="#F0F8FF"
+                android:drawableLeft="@drawable/ic_outline_account_circle_24"
+                android:drawablePadding="20dp"
+                android:hint="First Name"
+                android:padding="20dp"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/lastNameRegisterText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/firstNameRegisterText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="#F0F8FF"
+                android:drawableLeft="@drawable/ic_outline_account_circle_24"
+                android:drawablePadding="20dp"
+                android:hint="Last Name"
+                android:padding="20dp" />
+
+            <EditText
+                android:id="@+id/bloodTypeRegisterText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lastNameRegisterText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="#F0F8FF"
+                android:drawablePadding="20dp"
+                android:hint="Blood Type"
+                android:padding="20dp" />
+
+            <EditText
+                android:id="@+id/sexRegisterText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bloodTypeRegisterText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="#F0F8FF"
+                android:drawablePadding="20dp"
+                android:hint="Sex"
+                android:padding="20dp" />
+
+            <EditText
+                android:id="@+id/emailRegisterText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sexRegisterText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="#F0F8FF"
+                android:drawableLeft="@drawable/ic_outline_email_24"
+                android:drawablePadding="20dp"
+                android:hint="e-mail"
+                android:padding="20dp" />
+
+            <EditText
+                android:id="@+id/personalDoctorRegisterText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emailRegisterText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="#F0F8FF"
+                android:drawablePadding="20dp"
+                android:hint="Personal Doctor"
+                android:padding="20dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/registerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/personalDoctorRegisterText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#5d8aa6"
+                android:text="Register" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
