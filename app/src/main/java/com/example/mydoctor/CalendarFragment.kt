@@ -10,10 +10,19 @@ import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.fragment_calendar.*
 import com.example.mydoctor.R.layout.*
 import com.example.mydoctor.databinding.FragmentCalendarBinding
+import android.content.Context
+
+import android.widget.TextView
+
+import androidx.annotation.NonNull
+import androidx.fragment.app.activityViewModels
+
+import java.util.ArrayList
 
 
 class CalendarFragment : Fragment() {
 
+    //private lateinit var doctorsAdapter: DoctorsAdapter
     private lateinit var binding: FragmentCalendarBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +43,13 @@ class CalendarFragment : Fragment() {
         val adapterHospitals = ArrayAdapter(requireContext(),list_hospitals,itemsHospitals)
         binding.autocompleteTextViewHospitalDropdown.setAdapter(adapterHospitals)
 
-        val itemsDoctors = resources.getStringArray(R.array.doctors)
+        val itemsDoctors = resources.getStringArray(R.array.doctors_0)
         val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, itemsDoctors)
         binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
+
+//        doctorsAdapter = DoctorsAdapter(requireContext(), list_doctors, sharedViewModel.hospitals)
+//        binding.autocompleteTextViewDoctorDropdown.setAdapter(doctorsAdapter)
+
 
         val itemsDates = resources.getStringArray(R.array.dates)
         val adapterDate = ArrayAdapter(requireContext(), list_dates, itemsDates)

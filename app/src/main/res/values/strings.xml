@@ -23,35 +23,105 @@
     <string-array name="hospitals">
         <item>Ippokrateio General Hospital of Athens</item>
         <item>Evangelismos General Hospital of Athens</item>
-        <item>Alexandra General Hospital of Athens</item>
-        <item>"Agia Eleni Spiliopouleio" Pathology Hospital of Athens</item>
-        <item>"Agios Savvas" General Cancer Hospital of Athens</item>
-        <item>General Hospital of Thessaloniki "St. Demetrios"</item>
-        <item>Ippokrateio General Hospital of Thessaloniki</item>
+<!--        <item>Alexandra General Hospital of Athens</item>-->
+<!--        <item>"Agia Eleni Spiliopouleio" Pathology Hospital of Athens</item>-->
+<!--        <item>"Agios Savvas" General Cancer Hospital of Athens</item>-->
+<!--        <item>General Hospital of Thessaloniki "St. Demetrios"</item>-->
+<!--        <item>Ippokrateio General Hospital of Thessaloniki</item>-->
         <item>AHEPA Hospital</item>
-        <item>"Theagenio" Cancer Hospital of Thessaloniki</item>
-        <item>General Hospital of Thessaloniki "G.Gennimatas"</item>
-        <item>Patras General Hospital "Agios Andreas"</item>
-        <item>"Karamandaneio" Prefecture Children Hospital of Patras</item>
-        <item>General University Hospital of Patras</item>
-        <item>Venizelio Hospital of Heraclion</item>
-        <item>Asklepeion Crete</item>
-        <item>"Koutlimbaneio and Triantafylleio" General Hospital of Larissa</item>
-        <item>"Hippocrates" Maternal Hospital of Larissa</item>
-        <item>General Hospital of Veria</item>
-        <item>General Hospital of Tripoli Panarkadiko "Evangelistria"</item>
-        <item>General Hospital of Kavala</item>
+<!--        <item>"Theagenio" Cancer Hospital of Thessaloniki</item>-->
+<!--        <item>General Hospital of Thessaloniki "G.Gennimatas"</item>-->
+<!--        <item>Patras General Hospital "Agios Andreas"</item>-->
+<!--        <item>"Karamandaneio" Prefecture Children Hospital of Patras</item>-->
+<!--        <item>General University Hospital of Patras</item>-->
+<!--        <item>Venizelio Hospital of Heraclion</item>-->
+<!--        <item>Asklepeion Crete</item>-->
+<!--        <item>"Koutlimbaneio and Triantafylleio" General Hospital of Larissa</item>-->
+<!--        <item>"Hippocrates" Maternal Hospital of Larissa</item>-->
+<!--        <item>General Hospital of Veria</item>-->
+<!--        <item>General Hospital of Tripoli Panarkadiko "Evangelistria"</item>-->
+<!--        <item>General Hospital of Kavala</item>-->
     </string-array>
-    <string-array name="doctors">
+    <string-array name="doctors_0">
         <item>Panagiotis Papadopoulos</item>
         <item>Irini Markezou</item>
+    </string-array>
+    <string-array name="doctors_1">
         <item>Georgios Verros</item>
         <item>Anastasia Asimakopoulou</item>
+    </string-array>
+    <string-array name="doctors_2">
         <item>Dimitrios Evripiotis</item>
         <item>Aikaterini Mandrou</item>
-        <item>Stefanos Douliakas</item>
-        <item>Marianna Kourakou</item>
     </string-array>
+<!--    <string-array name="doctors_3">-->
+<!--        <item>Stefanos Douliakas</item>-->
+<!--        <item>Marianna Kourakou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_4">-->
+<!--        <item>Maria Marou</item>-->
+<!--        <item>Alexandros Fokas</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_5">-->
+<!--        <item>Stavroula Niokou</item>-->
+<!--        <item>Marios Andreou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_6">-->
+<!--        <item>Georgios Nasiou</item>-->
+<!--        <item>Despoina Xristodoulou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_7">-->
+<!--        <item>Theodora Vasou</item>-->
+<!--        <item>Filipos Anagnostopoulos</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_8">-->
+<!--        <item>Christos Papadopoulos</item>-->
+<!--        <item>Tereza Markezou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_9">-->
+<!--        <item>Giannis Verros</item>-->
+<!--        <item>Georgia Asimakopoulou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_10">-->
+<!--        <item>Konstantinos Evripiotis</item>-->
+<!--        <item>Theodosia Mandrou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_11">-->
+<!--        <item>Antonis Douliakas</item>-->
+<!--        <item>Kyriaki Kourakou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_12">-->
+<!--        <item>Zina Marou</item>-->
+<!--        <item>Achilleas Fokas</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_13">-->
+<!--        <item>Marianna Niokou</item>-->
+<!--        <item>Dimitrios Andreou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_14">-->
+<!--        <item>Athanasios Nasiou</item>-->
+<!--        <item>Panagiota Xristodoulou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_15">-->
+<!--        <item>Dimitrios Skoutas</item>-->
+<!--        <item>Eleni Pasxalidou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_16">-->
+<!--        <item>Neophytos Evangelou</item>-->
+<!--        <item>Eleni Pasxalidou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_17">-->
+<!--        <item>Nikolaos Kyriakidis</item>-->
+<!--        <item>Viktoria Tsavdaridou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_18">-->
+<!--        <item>Ilias Giannakakos</item>-->
+<!--        <item>Aikaterini Ioannou</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="doctors_19">-->
+<!--        <item>Stylianos Xanthis</item>-->
+<!--        <item>Vasiliki Kakogianni</item>-->
+<!--    </string-array>-->
     <string-array name="dates">
         <item>December 13 2021</item>
         <item>December 14 2021</item>

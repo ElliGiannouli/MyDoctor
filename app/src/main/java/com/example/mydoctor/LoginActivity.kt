@@ -73,13 +73,13 @@ class LoginActivity : AppCompatActivity() {
                 val tokenSave =  mypref.getString("TOKEN","")
 
                 if(!tokenSave.isNullOrEmpty()) {
-                    Toast.makeText(this@LoginActivity,"Data Saved",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@LoginActivity,"Successful Login",Toast.LENGTH_LONG).show()
                     Log.d("SuccessLogin","The response is: $responseData")
                     val intent = Intent(this@LoginActivity,MainActivity::class.java)
                     startActivity(intent)
                 }
                 else{
-                    Toast.makeText(this@LoginActivity,"Login Failed - provide correct credentials",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@LoginActivity,"Login Failed",Toast.LENGTH_LONG).show()
                 }
 
             }
