@@ -1,9 +1,6 @@
 package com.example.mydoctor.api
 
-import com.example.mydoctor.models.HospitalRequest
-import com.example.mydoctor.models.HospitalResponse
-import com.example.mydoctor.models.LoginRequest
-import com.example.mydoctor.models.LoginResponse
+import com.example.mydoctor.models.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -16,7 +13,13 @@ interface ApiInterface {
     ): Call<LoginResponse>
     @GET("hospitals")
     fun getHospital(
+    ): Call<List<HospitalResponse>>
+    @POST("doctors")
+    fun getDoctors(
         @Body hospitalRequest: HospitalRequest
-    ): Call<HospitalResponse>
-
+    ): Call<List<DoctorResponse>>
+    @POST("dates")
+    fun getDates(
+        @Body doctorRequest: DoctorRequest
+    ): Call<List<DateResponse>>
 }

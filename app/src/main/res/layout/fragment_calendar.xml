@@ -61,6 +61,7 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/choose_a_doctor"
         android:textAlignment="center"
+        android:enabled="false"
         app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <AutoCompleteTextView
@@ -85,6 +86,7 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/choose_a_date"
         android:textAlignment="center"
+        android:enabled="false"
         app:startIconDrawable="@drawable/ic_outline_calendar_today_24">
 
         <AutoCompleteTextView
@@ -111,6 +113,7 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/choose_a_time"
         android:textAlignment="center"
+        android:enabled="false"
         app:startIconDrawable="@drawable/ic_baseline_access_time_24">
 
         <AutoCompleteTextView

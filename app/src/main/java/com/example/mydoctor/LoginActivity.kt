@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 import org.json.JSONObject
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.Response as Response1
+import retrofit2.Response as Response
 
 
 const val BASE_URL = "https://docappmy.herokuapp.com/mydoctor/user/"
@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
         val retrofitData = retrofitBuilder.loginUser(LoginRequest(amka,password))
 
         retrofitData.enqueue(object:Callback<LoginResponse>{
-            override fun onResponse(call: Call<LoginResponse>, response: Response1<LoginResponse>) {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 val responseData = response.body()
                 val mypref = getSharedPreferences("mypref", MODE_PRIVATE)
                 val editor = mypref.edit()

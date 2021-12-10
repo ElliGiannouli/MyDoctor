@@ -11,18 +11,16 @@ import kotlinx.android.synthetic.main.fragment_calendar.*
 import com.example.mydoctor.R.layout.*
 import com.example.mydoctor.databinding.FragmentCalendarBinding
 import android.content.Context
-
 import android.widget.TextView
-
 import androidx.annotation.NonNull
-import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.ListAdapter
+import org.json.JSONArray
 
 import java.util.ArrayList
 
 
 class CalendarFragment : Fragment() {
 
-    //private lateinit var doctorsAdapter: DoctorsAdapter
     private lateinit var binding: FragmentCalendarBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,10 +45,6 @@ class CalendarFragment : Fragment() {
         val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, itemsDoctors)
         binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
 
-//        doctorsAdapter = DoctorsAdapter(requireContext(), list_doctors, sharedViewModel.hospitals)
-//        binding.autocompleteTextViewDoctorDropdown.setAdapter(doctorsAdapter)
-
-
         val itemsDates = resources.getStringArray(R.array.dates)
         val adapterDate = ArrayAdapter(requireContext(), list_dates, itemsDates)
         binding.autocompleteTextViewDateDropdown.setAdapter(adapterDate)
@@ -58,6 +52,24 @@ class CalendarFragment : Fragment() {
         val itemsTimes = resources.getStringArray(R.array.times)
         val adapterTime = ArrayAdapter(requireContext(), list_times, itemsTimes)
         binding.autocompleteTextViewTimeDropdown.setAdapter(adapterTime)
+
+        if(!autocomplete_text_view_hospital_dropdown.text.toString().isNullOrEmpty()){
+
+            doctor_dropdown.isEnabled
+
+        }
+
+        if(!autocomplete_text_view_doctor_dropdown.text.toString().isNullOrEmpty()){
+
+            date_dropdown.isEnabled
+
+        }
+
+        if(!autocomplete_text_view_date_dropdown.text.toString().isNullOrEmpty()){
+
+            time_dropdown.isEnabled
+
+        }
 
         binding.bookADateButton.setOnClickListener {
 
