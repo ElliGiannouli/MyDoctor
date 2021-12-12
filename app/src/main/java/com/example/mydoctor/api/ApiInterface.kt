@@ -11,14 +11,14 @@ interface ApiInterface {
     fun loginUser(
         @Body loginRequest: LoginRequest
     ): Call<LoginResponse>
-    @GET("hospitals")
+    @POST("hospitals")
     fun getHospital(
-    ): Call<List<HospitalResponse>>
-    @POST("doctors")
+    ): Call<HospitalResponse>
+    @POST("doctor")
     fun getDoctors(
         @Body hospitalRequest: HospitalRequest
     ): Call<List<DoctorResponse>>
-    @POST("dates")
+    @POST("date")
     fun getDates(
         @Body doctorRequest: DoctorRequest
     ): Call<List<DateResponse>>
