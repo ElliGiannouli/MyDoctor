@@ -1,6 +1,7 @@
 package com.example.mydoctor.api
 
 import com.example.mydoctor.models.*
+import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -11,9 +12,9 @@ interface ApiInterface {
     fun loginUser(
         @Body loginRequest: LoginRequest
     ): Call<LoginResponse>
-    @POST("hospitals")
+    @GET("hospital")
     fun getHospital(
-    ): Call<HospitalResponse>
+    ): Call<List<HospitalResponse>>
     @POST("doctor")
     fun getDoctors(
         @Body hospitalRequest: HospitalRequest
