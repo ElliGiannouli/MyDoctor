@@ -1,6 +1,5 @@
 package com.example.mydoctor
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -15,14 +14,11 @@ import kotlinx.android.synthetic.main.fragment_calendar.*
 import com.example.mydoctor.R.layout.*
 import com.example.mydoctor.api.ApiInterface
 import com.example.mydoctor.models.HospitalResponse
-import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-import java.util.ArrayList
 import com.example.mydoctor.databinding.FragmentCalendarBinding
 import com.example.mydoctor.models.DoctorResponse
 import com.example.mydoctor.models.HospitalRequest
@@ -39,13 +35,16 @@ class CalendarFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         super.onCreate(savedInstanceState)
         binding = FragmentCalendarBinding.inflate(layoutInflater)
+
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -59,15 +58,15 @@ class CalendarFragment : Fragment() {
             override fun onResponse(call: Call<List<HospitalResponse>?>, response: Response<List<HospitalResponse>?>) {
                 val responseData = response.body()!!
 
-                val hospital_list = mutableListOf<String>()
+                val hospitalList = mutableListOf<String>()
 
                 for(hospitalResponse in responseData){
-                    hospital_list.add(hospitalResponse.hospitalName)
+                    hospitalList.add(hospitalResponse.hospitalName)
                 }
 
-                Log.d("hospitallist","the hospital list is: $hospital_list")
+                Log.d("hospitallist","the hospital list is: $hospitalList")
 
-                val adapterHospitals = ArrayAdapter(requireContext(),list_hospitals,hospital_list)
+                val adapterHospitals = ArrayAdapter(requireContext(),list_hospitals,hospitalList)
                 binding.autocompleteTextViewHospitalDropdown.setAdapter(adapterHospitals)
 
             }
@@ -76,31 +75,51 @@ class CalendarFragment : Fragment() {
                 Log.d("ERRORhospitals","Failed at hospitals:"+t.message)
             }
         })
-        
-        val hospital = autocomplete_text_view_hospital_dropdown.text.toString().trim()
 
-        val retrofitDataDoctors = retrofitBuilder.getDoctors(HospitalRequest(hospital))
+        autocomplete_text_view_hospital_dropdown.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
 
-        retrofitDataDoctors.enqueue(object:Callback<List<DoctorResponse>?>{
-            override fun onResponse(call: Call<List<DoctorResponse>?>, response: Response<List<DoctorResponse>?>) {
-
-                val responseData = response.body()!!
-
-                val doctor_list = mutableListOf<String>()
-
-                for(doctorResponse in responseData){
-                    doctor_list.add(doctorResponse.doctorName)
-                }
-
-                Log.d("doctorlist","the hospital list is: $doctor_list")
-
-                val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, doctor_list)
-                binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
+                doctor_dropdown.isEnabled = true
 
             }
 
-            override fun onFailure(call: Call<List<DoctorResponse>?>, t: Throwable) {
-                Log.d("ERRORdoctors","Failed at doctors:"+t.message)
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                doctor_dropdown.isEnabled = false
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                var hospital:String = autocomplete_text_view_hospital_dropdown.text.toString().trim()
+                Log.d("val hospital","The chosen hospital is: $hospital")
+
+                val retrofitDataDoctors = retrofitBuilder.getDoctors(HospitalRequest(hospital))
+                Log.d("retrofitData","the retrofitdatadoctors is $retrofitDataDoctors")
+
+                retrofitDataDoctors.enqueue(object:Callback<DoctorResponse>{
+                    override fun onResponse(call: Call<DoctorResponse>, response: Response<DoctorResponse>) {
+
+                        //val responseData = response.body()!!
+
+                        Log.d("responsebody","the response body is : ${response.body()}")
+
+                        val doctorList = mutableListOf<String>()
+
+                        //for(doctorResponse in responseData){
+//                            doctorList.add(responseData.doctorName)
+//                        //}
+//
+//                        Log.d("doctorlist","the hospital list is: $doctorList")
+//
+//                        val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, doctorList)
+//                        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
+
+                    }
+
+                    override fun onFailure(call: Call<DoctorResponse>, t: Throwable) {
+                        Log.d("ERRORdoctors","Failed at doctors:"+t.message)
+                    }
+                })
             }
         })
 
@@ -119,43 +138,6 @@ class CalendarFragment : Fragment() {
         val itemsTimes = resources.getStringArray(R.array.times)
         val adapterTime = ArrayAdapter(requireContext(), list_times, itemsTimes)
         binding.autocompleteTextViewTimeDropdown.setAdapter(adapterTime)
-
-        binding.bookADateButton.setOnClickListener {
-
-            val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
-            val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
-            val chosenDate = autocomplete_text_view_date_dropdown.text.toString()
-            val chosenTime = autocomplete_text_view_time_dropdown.text.toString()
-
-            val intent = Intent(requireContext(),ConfirmationActivity::class.java)
-            intent.putExtra("hospital_confirmation",chosenHospital)
-            intent.putExtra("doctor_confirmation",chosenDoctor)
-            intent.putExtra("date_confirmation", chosenDate)
-            intent.putExtra("time_confirmation",chosenTime)
-            startActivity(intent)
-        }
-
-        return binding.root
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-     autocomplete_text_view_hospital_dropdown.addTextChangedListener(object: TextWatcher{
-          override fun afterTextChanged(s: Editable?) {
-
-              doctor_dropdown.isEnabled = true
-          }
-
-          override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-              doctor_dropdown.isEnabled = false
-          }
-
-          override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-          }
-
-      })
 
         autocomplete_text_view_doctor_dropdown.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
@@ -188,6 +170,21 @@ class CalendarFragment : Fragment() {
             }
 
         })
+
+        binding.bookADateButton.setOnClickListener {
+
+            val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
+            val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
+            val chosenDate = autocomplete_text_view_date_dropdown.text.toString()
+            val chosenTime = autocomplete_text_view_time_dropdown.text.toString()
+
+            val intent = Intent(requireContext(),ConfirmationActivity::class.java)
+            intent.putExtra("hospital_confirmation",chosenHospital)
+            intent.putExtra("doctor_confirmation",chosenDoctor)
+            intent.putExtra("date_confirmation", chosenDate)
+            intent.putExtra("time_confirmation",chosenTime)
+            startActivity(intent)
+        }
 
         super.onViewCreated(view, savedInstanceState)
     }
