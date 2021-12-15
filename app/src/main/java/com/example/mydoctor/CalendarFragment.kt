@@ -20,6 +20,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.mydoctor.databinding.FragmentCalendarBinding
+import com.example.mydoctor.models.DateResponse
 import com.example.mydoctor.models.DoctorResponse
 import com.example.mydoctor.models.HospitalRequest
 
@@ -45,6 +46,13 @@ class CalendarFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val datesList = listOf<String>(
+            "12/13/2021 10:00","12/13/2021 11:00","12/13/2021 12:00","12/13/2021 13:00","12/13/2021 14:00","12/13/2021 17:30","12/13/2021 18:30","12/13/2021 19:30","12/13/2021 20:30",
+            "12/14/2021 10:00","12/14/2021 11:00","12/14/2021 12:00","12/14/2021 13:00","12/14/2021 14:00","12/14/2021 17:30","12/14/2021 18:30","12/14/2021 19:30","12/14/2021 20:30",
+            "12/15/2021 10:00","12/15/2021 11:00","12/15/2021 12:00","12/15/2021 13:00","12/15/2021 14:00","12/15/2021 17:30","12/15/2021 18:30","12/15/2021 19:30","12/15/2021 20:30",
+            "12/16/2021 10:00","12/16/2021 11:00","12/16/2021 12:00","12/16/2021 13:00","12/16/2021 14:00","12/16/2021 17:30","12/16/2021 18:30","12/16/2021 19:30","12/16/2021 20:30",
+            "12/17/2021 10:00","12/17/2021 11:00","12/17/2021 12:00","12/17/2021 13:00","12/17/2021 14:00","12/17/2021 17:30","12/17/2021 18:30","12/17/2021 19:30","12/17/2021 20:30")
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -90,36 +98,96 @@ class CalendarFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-//                var hospital:String = autocomplete_text_view_hospital_dropdown.text.toString().trim()
-//                Log.d("val hospital","The chosen hospital is: $hospital")
-//
-//                val retrofitDataDoctors = retrofitBuilder.getDoctors(HospitalRequest(hospital))
-//                Log.d("retrofitData","the retrofitdatadoctors is $retrofitDataDoctors")
-//
-//                retrofitDataDoctors.enqueue(object:Callback<DoctorResponse>{
-//                    override fun onResponse(call: Call<DoctorResponse>, response: Response<DoctorResponse>) {
-//
-//                        val responseData = response.body()!!
-//
-//                        Log.d("responsebody","the response body is : ${response.body()}")
-//
-//                        val doctorList = mutableListOf<String>()
-//
-//                        for(doctorResponse in responseData){
-//                            doctorList.add(responseData.doctorName)
-//                        }
-//
-//                        Log.d("doctorlist","the hospital list is: $doctorList")
-//
-//                        val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, doctorList)
-//                        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
-//
-//                    }
-//
-//                    override fun onFailure(call: Call<DoctorResponse>, t: Throwable) {
-//                        Log.d("ERRORdoctors","Failed at doctors:"+t.message)
-//                    }
-//                })
+                val hospital:String = autocomplete_text_view_hospital_dropdown.text.toString().trim()
+                Log.d("val hospital","The chosen hospital is: $hospital")
+
+                val retrofitDataDoctors = retrofitBuilder.getDoctors(hospital)
+                Log.d("retrofitData","the retrofitdatadoctors is $retrofitDataDoctors")
+
+                retrofitDataDoctors.enqueue(object:Callback<List<DoctorResponse>>{
+                    override fun onResponse(call: Call<List<DoctorResponse>>, response: Response<List<DoctorResponse>>) {
+
+                        val responseData = response.body()!!
+
+                        Log.d("responsebody","the response body is : ${response.body()}")
+
+                        var doctorList = mutableListOf<String>()
+                        var emailList = mutableListOf<String>()
+
+                        for(doctorResponse in responseData){
+                            doctorList.add(doctorResponse.doctorName)
+                            emailList.add(doctorResponse.doctorEmail)
+                        }
+
+                        Log.d("doctorlist","the doctor list is: $doctorList")
+
+                        val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, doctorList)
+                        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
+
+                        autocomplete_text_view_doctor_dropdown.addTextChangedListener(object: TextWatcher{
+                            override fun afterTextChanged(s: Editable?) {
+
+                                date_and_time_dropdown.isEnabled = true
+                            }
+
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                                date_and_time_dropdown.isEnabled = false
+                            }
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                                val doctor:String = autocomplete_text_view_doctor_dropdown.text.toString().trim()
+                                Log.d("val doctor","The chosen doctor is: $doctor")
+                                var i = 0
+                                var doctorEmail = ""
+                                while(i <doctorList.size) {
+                                    if (doctorList[i] == doctor) {
+                                        doctorEmail = emailList[i]
+                                    }
+                                    i++
+                                }
+                                val retrofitDataDates = retrofitBuilder.getDates(doctorEmail)
+                                Log.d("retrofitData","the retrofitdatadates is $retrofitDataDates")
+
+                                retrofitDataDates.enqueue(object:Callback<List<DateResponse>>{
+                                    override fun onResponse(call: Call<List<DateResponse>>, response: Response<List<DateResponse>>) {
+
+                                        val responseData = response.body()!!
+
+                                        Log.d("responsebody","the response body is : ${response.body()}")
+
+                                        val unavailableDatesList = mutableListOf<String>()
+
+                                        for(dateResponse in responseData){
+                                            unavailableDatesList.add(dateResponse.notAvailableDates)
+                                        }
+
+                                        val intermediateDatesList = datesList.toMutableList()
+                                        intermediateDatesList.removeAll(unavailableDatesList)
+                                        val availableDatesList = mutableListOf<String>()
+                                        availableDatesList.addAll(intermediateDatesList)
+
+                                        val adapterDates = ArrayAdapter(requireContext(), list_dates, availableDatesList)
+                                        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDates)
+
+                                    }
+
+                                    override fun onFailure(call: Call<List<DateResponse>>, t: Throwable) {
+                                        Log.d("ERRORdates","Failed at dates:"+t.message)
+                                    }
+                                })
+                            }
+
+                        })
+
+
+                    }
+
+                    override fun onFailure(call: Call<List<DoctorResponse>>, t: Throwable) {
+                        Log.d("ERRORdoctors","Failed at doctors:"+t.message)
+                    }
+                })
             }
         })
 
@@ -127,20 +195,13 @@ class CalendarFragment : Fragment() {
 //        val adapterHospitals = ArrayAdapter(requireContext(),list_hospitals,itemsHospitals)
 //        binding.autocompleteTextViewHospitalDropdown.setAdapter(adapterHospitals)
 
-        val itemsDoctors = resources.getStringArray(R.array.doctors_0)
-        val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, itemsDoctors)
-        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
+//        val itemsDoctors = resources.getStringArray(R.array.doctors_0)
+//        val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, itemsDoctors)
+//        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
 
-        val datesList = mutableListOf<String>(
-        "12/13/2021 10:00","12/13/2021 11:00","12/13/2021 12:00","12/13/2021 13:00","12/13/2021 14:00","12/13/2021 17:30","12/13/2021 18:30","12/13/2021 19:30","12/13/2021 20:30",
-        "12/14/2021 10:00","12/14/2021 11:00","12/14/2021 12:00","12/14/2021 13:00","12/14/2021 14:00","12/14/2021 17:30","12/14/2021 18:30","12/14/2021 19:30","12/14/2021 20:30",
-        "12/15/2021 10:00","12/15/2021 11:00","12/15/2021 12:00","12/15/2021 13:00","12/15/2021 14:00","12/15/2021 17:30","12/15/2021 18:30","12/15/2021 19:30","12/15/2021 20:30",
-        "12/16/2021 10:00","12/16/2021 11:00","12/16/2021 12:00","12/16/2021 13:00","12/16/2021 14:00","12/16/2021 17:30","12/16/2021 18:30","12/16/2021 19:30","12/16/2021 20:30",
-        "12/17/2021 10:00","12/17/2021 11:00","12/17/2021 12:00","12/17/2021 13:00","12/17/2021 14:00","12/17/2021 17:30","12/17/2021 18:30","12/17/2021 19:30","12/17/2021 20:30")
-
-        val itemsDates = resources.getStringArray(R.array.dates)
-        val adapterDate = ArrayAdapter(requireContext(), list_dates, datesList)
-        binding.autocompleteTextViewDateAndTimeDropdown.setAdapter(adapterDate)
+//        val itemsDates = resources.getStringArray(R.array.dates)
+//        val adapterDate = ArrayAdapter(requireContext(), list_dates, datesList)
+//        binding.autocompleteTextViewDateAndTimeDropdown.setAdapter(adapterDate)
 
         autocomplete_text_view_doctor_dropdown.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
@@ -154,6 +215,40 @@ class CalendarFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                val doctor:String = autocomplete_text_view_doctor_dropdown.text.toString().trim()
+                Log.d("val doctor","The chosen doctor is: $doctor")
+
+                val retrofitDataDates = retrofitBuilder.getDates(doctor)
+                Log.d("retrofitData","the retrofitdatadates is $retrofitDataDates")
+
+                retrofitDataDates.enqueue(object:Callback<List<DateResponse>>{
+                    override fun onResponse(call: Call<List<DateResponse>>, response: Response<List<DateResponse>>) {
+
+                        val responseData = response.body()!!
+
+                        Log.d("responsebody","the response body is : ${response.body()}")
+
+                        val unavailableDatesList = mutableListOf<String>()
+
+                        for(dateResponse in responseData){
+                            unavailableDatesList.add(dateResponse.notAvailableDates)
+                        }
+
+                        val intermediateDatesList = datesList.toMutableList()
+                        intermediateDatesList.removeAll(unavailableDatesList)
+                        val availableDatesList = mutableListOf<String>()
+                        availableDatesList.addAll(intermediateDatesList)
+
+                        val adapterDates = ArrayAdapter(requireContext(), list_dates, availableDatesList)
+                        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDates)
+
+                    }
+
+                    override fun onFailure(call: Call<List<DateResponse>>, t: Throwable) {
+                        Log.d("ERRORdates","Failed at dates:"+t.message)
+                    }
+                })
             }
 
         })

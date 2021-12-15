@@ -20,12 +20,14 @@ interface ApiInterface {
 //        @Body hospitalRequest: HospitalRequest
 //    ): Call<List<DoctorResponse>>
 
+    //@Header("Authorization: Bearer <token>" )
+
     @GET("doctor")
-    fun getDoctors( @Query("hospital_name" ) hospitalName: HospitalRequest
-    ): Call<DoctorResponse>
+    fun getDoctors( @Query("hospital_name") hospitalName: String
+    ): Call<List<DoctorResponse>>
+
 
     @GET("date")
-    fun getDates(
-        @Body doctorRequest: DoctorRequest
+    fun getDates( @Query("email_doc") doctorEmail: String
     ): Call<List<DateResponse>>
 }

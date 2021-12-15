@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class DoctorResponse(
 
     @SerializedName("fullname_doc")
-    val doctorName: String
+    val doctorName: String,
 
-//    @SerializedName("medic_spec")
-//    val doctorSpec: String
+    @SerializedName("email_doc")
+    val doctorEmail: String
 
 )

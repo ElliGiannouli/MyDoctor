@@ -5,7 +5,7 @@ import org.json.JSONArray
 
 data class DateResponse(
 
-    @SerializedName("")
-    val notAvailableDates: JSONArray
+    @SerializedName("unavailable_dates")
+    val notAvailableDates: String
 
 )
