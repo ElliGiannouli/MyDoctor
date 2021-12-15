@@ -17,17 +17,14 @@ class ConfirmationActivity : AppCompatActivity() {
 
         val bookedHospitalView : TextView = booked_hospital_view as TextView
         val bookedDoctorView : TextView = booked_doctor_view as TextView
-        val bookedDateView : TextView = booked_date_view as TextView
-        val bookedTimeView : TextView = booked_time_view as TextView
+        val bookedDateAndTimeView : TextView = booked_date_and_time_view as TextView
 
         val bookedHospital = intent.getStringExtra("hospital_confirmation").toString()
         val bookedDoctor = intent.getStringExtra("doctor_confirmation").toString()
-        val bookedDate = intent.getStringExtra("date_confirmation").toString()
-        val bookedTime = intent.getStringExtra("time_confirmation").toString()
+        val bookedDateAndTime = intent.getStringExtra("date_and_time_confirmation").toString()
 
         bookedHospitalView.text = "at $bookedHospital"
         bookedDoctorView.text = "with Doctor $bookedDoctor"
-        bookedDateView.text = "on $bookedDate"
-        bookedTimeView.text = "at $bookedTime"
+        bookedDateAndTimeView.text = "on $bookedDateAndTime"
     }
 }

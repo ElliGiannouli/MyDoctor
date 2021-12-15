@@ -90,36 +90,36 @@ class CalendarFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-                var hospital:String = autocomplete_text_view_hospital_dropdown.text.toString().trim()
-                Log.d("val hospital","The chosen hospital is: $hospital")
-
-                val retrofitDataDoctors = retrofitBuilder.getDoctors(HospitalRequest(hospital))
-                Log.d("retrofitData","the retrofitdatadoctors is $retrofitDataDoctors")
-
-                retrofitDataDoctors.enqueue(object:Callback<DoctorResponse>{
-                    override fun onResponse(call: Call<DoctorResponse>, response: Response<DoctorResponse>) {
-
-                        //val responseData = response.body()!!
-
-                        Log.d("responsebody","the response body is : ${response.body()}")
-
-                        val doctorList = mutableListOf<String>()
-
-                        //for(doctorResponse in responseData){
+//                var hospital:String = autocomplete_text_view_hospital_dropdown.text.toString().trim()
+//                Log.d("val hospital","The chosen hospital is: $hospital")
+//
+//                val retrofitDataDoctors = retrofitBuilder.getDoctors(HospitalRequest(hospital))
+//                Log.d("retrofitData","the retrofitdatadoctors is $retrofitDataDoctors")
+//
+//                retrofitDataDoctors.enqueue(object:Callback<DoctorResponse>{
+//                    override fun onResponse(call: Call<DoctorResponse>, response: Response<DoctorResponse>) {
+//
+//                        val responseData = response.body()!!
+//
+//                        Log.d("responsebody","the response body is : ${response.body()}")
+//
+//                        val doctorList = mutableListOf<String>()
+//
+//                        for(doctorResponse in responseData){
 //                            doctorList.add(responseData.doctorName)
-//                        //}
+//                        }
 //
 //                        Log.d("doctorlist","the hospital list is: $doctorList")
 //
 //                        val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, doctorList)
 //                        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
-
-                    }
-
-                    override fun onFailure(call: Call<DoctorResponse>, t: Throwable) {
-                        Log.d("ERRORdoctors","Failed at doctors:"+t.message)
-                    }
-                })
+//
+//                    }
+//
+//                    override fun onFailure(call: Call<DoctorResponse>, t: Throwable) {
+//                        Log.d("ERRORdoctors","Failed at doctors:"+t.message)
+//                    }
+//                })
             }
         })
 
@@ -127,43 +127,30 @@ class CalendarFragment : Fragment() {
 //        val adapterHospitals = ArrayAdapter(requireContext(),list_hospitals,itemsHospitals)
 //        binding.autocompleteTextViewHospitalDropdown.setAdapter(adapterHospitals)
 
-//        val itemsDoctors = resources.getStringArray(R.array.doctors_0)
-//        val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, itemsDoctors)
-//        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
+        val itemsDoctors = resources.getStringArray(R.array.doctors_0)
+        val adapterDoctors = ArrayAdapter(requireContext(), list_doctors, itemsDoctors)
+        binding.autocompleteTextViewDoctorDropdown.setAdapter(adapterDoctors)
+
+        val datesList = mutableListOf<String>(
+        "12/13/2021 10:00","12/13/2021 11:00","12/13/2021 12:00","12/13/2021 13:00","12/13/2021 14:00","12/13/2021 17:30","12/13/2021 18:30","12/13/2021 19:30","12/13/2021 20:30",
+        "12/14/2021 10:00","12/14/2021 11:00","12/14/2021 12:00","12/14/2021 13:00","12/14/2021 14:00","12/14/2021 17:30","12/14/2021 18:30","12/14/2021 19:30","12/14/2021 20:30",
+        "12/15/2021 10:00","12/15/2021 11:00","12/15/2021 12:00","12/15/2021 13:00","12/15/2021 14:00","12/15/2021 17:30","12/15/2021 18:30","12/15/2021 19:30","12/15/2021 20:30",
+        "12/16/2021 10:00","12/16/2021 11:00","12/16/2021 12:00","12/16/2021 13:00","12/16/2021 14:00","12/16/2021 17:30","12/16/2021 18:30","12/16/2021 19:30","12/16/2021 20:30",
+        "12/17/2021 10:00","12/17/2021 11:00","12/17/2021 12:00","12/17/2021 13:00","12/17/2021 14:00","12/17/2021 17:30","12/17/2021 18:30","12/17/2021 19:30","12/17/2021 20:30")
 
         val itemsDates = resources.getStringArray(R.array.dates)
-        val adapterDate = ArrayAdapter(requireContext(), list_dates, itemsDates)
-        binding.autocompleteTextViewDateDropdown.setAdapter(adapterDate)
-
-        val itemsTimes = resources.getStringArray(R.array.times)
-        val adapterTime = ArrayAdapter(requireContext(), list_times, itemsTimes)
-        binding.autocompleteTextViewTimeDropdown.setAdapter(adapterTime)
+        val adapterDate = ArrayAdapter(requireContext(), list_dates, datesList)
+        binding.autocompleteTextViewDateAndTimeDropdown.setAdapter(adapterDate)
 
         autocomplete_text_view_doctor_dropdown.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
 
-                date_dropdown.isEnabled = true
+                date_and_time_dropdown.isEnabled = true
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
-                date_dropdown.isEnabled = false
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
-
-        autocomplete_text_view_date_dropdown.addTextChangedListener(object: TextWatcher{
-            override fun afterTextChanged(s: Editable?) {
-
-                time_dropdown.isEnabled = true
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-                time_dropdown.isEnabled = false
+                date_and_time_dropdown.isEnabled = false
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -175,14 +162,12 @@ class CalendarFragment : Fragment() {
 
             val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
             val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
-            val chosenDate = autocomplete_text_view_date_dropdown.text.toString()
-            val chosenTime = autocomplete_text_view_time_dropdown.text.toString()
+            val chosenDateAndTime = autocomplete_text_view_date_and_time_dropdown.text.toString()
 
             val intent = Intent(requireContext(),ConfirmationActivity::class.java)
             intent.putExtra("hospital_confirmation",chosenHospital)
             intent.putExtra("doctor_confirmation",chosenDoctor)
-            intent.putExtra("date_confirmation", chosenDate)
-            intent.putExtra("time_confirmation",chosenTime)
+            intent.putExtra("date_and_time_confirmation", chosenDateAndTime)
             startActivity(intent)
         }
 
