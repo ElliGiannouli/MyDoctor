@@ -52,9 +52,11 @@ class ProfileFragment() : Fragment() {
                if (response.isSuccessful){
                    val responseData = response.body()!!
                    firstNameProfileText.setText(responseData.firstName.toString())
-
-
-
+                   lastNameProfileText.setText(responseData.lastName.toString())
+                   sexProfileText.setText(responseData.sex.toString())
+                   bloodTypeProfileText.setText(responseData.bloodType.toString())
+                   personalDoctorProfileText.setText(responseData.personalDoctor.toString())
+                   amkaProfileText.setText(responseData.amka.toString())
 
                    Log.d("Bravo","token einai edw : $token2")
                }
