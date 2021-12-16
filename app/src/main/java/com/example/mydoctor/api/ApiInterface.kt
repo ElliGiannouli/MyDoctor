@@ -26,8 +26,13 @@ interface ApiInterface {
     fun getDoctors( @Query("hospital_name") hospitalName: String
     ): Call<List<DoctorResponse>>
 
-
     @GET("date")
     fun getDates( @Query("email_doc") doctorEmail: String
-    ): Call<List<DateResponse>>
+    ): Call<List<DateAndTimeResponse>>
+
+    @POST("appointment?token={token_id}")
+    fun sendAppointment (
+        @Path("token_id") tokenId:String,
+        @Body sendAppointmentRequest: SendAppointmentRequest
+    ): Call<BookedAppointmentResponse>
 }
