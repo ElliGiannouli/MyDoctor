@@ -1,7 +1,9 @@
 package com.example.mydoctor
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -14,8 +16,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpTabBar() {
-        val adapter = TabPageAdapter(activity = this , tabLayout.tabCount)
+        var token = intent.getStringExtra("Token")
+        val adapter = TabPageAdapter(activity = this , tabLayout.tabCount ,token.toString())
         viewPager.adapter = adapter
+        Log.d("token", "token is in main: $token")
+        val sharedPrefsToken: SharedPreferences = this.getPreferences(MODE_PRIVATE)
+        val editor = sharedPrefsToken.edit()
+        editor.putString("sharedprefstoken", token.toString())
+        editor.apply()
+
 
         viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
 

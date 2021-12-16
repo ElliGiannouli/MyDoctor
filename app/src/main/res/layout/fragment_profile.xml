@@ -15,21 +15,21 @@
         android:textAlignment="center"
         android:textColor="#007ca5"
         android:background="@color/white" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="105dp"
-        android:text="PROFILE"
-        android:textAlignment="center" />
+        <TextView
+            android:id="@+id/firstNameProfileText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="textStart" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="0dp"
+    </LinearLayout>
 
-        android:background="@drawable/logo" />
+
+
 
 </FrameLayout>

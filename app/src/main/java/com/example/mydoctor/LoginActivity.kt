@@ -64,6 +64,7 @@ class LoginActivity : AppCompatActivity() {
                 val responseData = response.body()
                 Log.d("SuccessLogin","The response is: $responseData")
                 val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                intent.putExtra("Token", responseData?.token.toString())
                 startActivity(intent)
 
             }

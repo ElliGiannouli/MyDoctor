@@ -15,6 +15,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
+
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +50,11 @@ class RegisterActivity : AppCompatActivity() {
                 amkaRegisterText.requestFocus()
                 return@setOnClickListener
             }
+            if (amka.length< 11) {
+                amkaRegisterText.error = "AMKA must be 11 numbers"
+                amkaRegisterText.requestFocus()
+                return@setOnClickListener
+            }
             if (password.isEmpty()) {
                 passwordRegisterText.error = "Password required"
                 passwordRegisterText.requestFocus()
@@ -59,27 +66,27 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             if (lastName.isEmpty()) {
-                lastNameRegisterText.error = "Password required"
+                lastNameRegisterText.error = "LastName required"
                 lastNameRegisterText.requestFocus()
                 return@setOnClickListener
             }
             if (bloodType.isEmpty()) {
-                bloodTypeRegisterText.error = "Password required"
+                bloodTypeRegisterText.error = "Blood Type required"
                 bloodTypeRegisterText.requestFocus()
                 return@setOnClickListener
             }
             if (sex.isEmpty()) {
-                sexRegisterText.error = "Password required"
+                sexRegisterText.error = "Sex required"
                 sexRegisterText.requestFocus()
                 return@setOnClickListener
             }
             if (email.isEmpty()) {
-                emailRegisterText.error = "Password required"
+                emailRegisterText.error = "E-mail required"
                 emailRegisterText.requestFocus()
                 return@setOnClickListener
             }
             if (personalDoctor.isEmpty()) {
-                personalDoctorRegisterText.error = "Password required"
+                personalDoctorRegisterText.error = "Personal Doctor required"
                 personalDoctorRegisterText.requestFocus()
                 return@setOnClickListener
             }
