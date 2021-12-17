@@ -1,6 +1,8 @@
 package com.example.mydoctor
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -23,7 +25,7 @@ import com.example.mydoctor.models.*
 
 const val APP_URL = "https://docappmy.herokuapp.com/mydoctor/appointments/"
 
-class CalendarFragment : Fragment() {
+class CalendarFragment: Fragment() {
 
     private lateinit var binding: FragmentCalendarBinding
 
@@ -39,6 +41,11 @@ class CalendarFragment : Fragment() {
         binding = FragmentCalendarBinding.inflate(layoutInflater)
 
         return binding.root
+
+        val sharedPrefsTokenCalendar: SharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val tokenCalendar = sharedPrefsTokenCalendar.getString("sharedprefstokenCalendar"," ").toString()
+        Log.d("tokenCalendar", "tokenCalendar is: $tokenCalendar")
+
 
     }
 
@@ -181,7 +188,7 @@ class CalendarFragment : Fragment() {
 
                                             val dateAndTime: String = autocomplete_text_view_date_and_time_dropdown.text.toString().trim()
 
-                                            val retrofitDataBookedAppointment = retrofitBuilder.sendAppointment(sendAppointmentRequest(,doctorEmail,dateAndTime))
+                                            val retrofitDataBookedAppointment = retrofitBuilder.sendAppointment(sendAppointmentRequest(doctorEmail,dateAndTime))
 
                                             val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
                                             val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
@@ -226,68 +233,18 @@ class CalendarFragment : Fragment() {
 //        val adapterDate = ArrayAdapter(requireContext(), list_dates, datesList)
 //        binding.autocompleteTextViewDateAndTimeDropdown.setAdapter(adapterDate)
 
-//        autocomplete_text_view_doctor_dropdown.addTextChangedListener(object: TextWatcher{
-//            override fun afterTextChanged(s: Editable?) {
+//        binding.bookADateButton.setOnClickListener {
 //
-//                date_and_time_dropdown.isEnabled = true
-//            }
+//            val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
+//            val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
+//            val chosenDateAndTime = autocomplete_text_view_date_and_time_dropdown.text.toString()
 //
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//
-//                date_and_time_dropdown.isEnabled = false
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//
-//                val doctor:String = autocomplete_text_view_doctor_dropdown.text.toString().trim()
-//                Log.d("val doctor","The chosen doctor is: $doctor")
-//
-//                val retrofitDataDates = retrofitBuilder.getDates(doctor)
-//                Log.d("retrofitData","the retrofitdatadates is $retrofitDataDates")
-//
-//                retrofitDataDates.enqueue(object:Callback<List<DateResponse>>{
-//                    override fun onResponse(call: Call<List<DateResponse>>, response: Response<List<DateResponse>>) {
-//
-//                        val responseData = response.body()!!
-//
-//                        Log.d("responsebody","the response body is : ${response.body()}")
-//
-//                        val unavailableDatesList = mutableListOf<String>()
-//
-//                        for(dateResponse in responseData){
-//                            unavailableDatesList.add(dateResponse.notAvailableDates)
-//                        }
-//
-//                        val intermediateDatesList = datesList.toMutableList()
-//                        intermediateDatesList.removeAll(unavailableDatesList)
-//                        val availableDatesList = mutableListOf<String>()
-//                        availableDatesList.addAll(intermediateDatesList)
-//
-//                        val adapterDates = ArrayAdapter(requireContext(), list_dates, availableDatesList)
-//                        binding.autocompleteTextViewDateAndTimeDropdown.setAdapter(adapterDates)
-//
-//                    }
-//
-//                    override fun onFailure(call: Call<List<DateResponse>>, t: Throwable) {
-//                        Log.d("ERRORdates","Failed at dates:"+t.message)
-//                    }
-//                })
-//            }
-//
-//        })
-
-        binding.bookADateButton.setOnClickListener {
-
-            val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
-            val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
-            val chosenDateAndTime = autocomplete_text_view_date_and_time_dropdown.text.toString()
-
-            val intent = Intent(requireContext(),ConfirmationActivity::class.java)
-            intent.putExtra("hospital_confirmation",chosenHospital)
-            intent.putExtra("doctor_confirmation",chosenDoctor)
-            intent.putExtra("date_and_time_confirmation", chosenDateAndTime)
-            startActivity(intent)
-        }
+//            val intent = Intent(requireContext(),ConfirmationActivity::class.java)
+//            intent.putExtra("hospital_confirmation",chosenHospital)
+//            intent.putExtra("doctor_confirmation",chosenDoctor)
+//            intent.putExtra("date_and_time_confirmation", chosenDateAndTime)
+//            startActivity(intent)
+//        }
 
         super.onViewCreated(view, savedInstanceState)
     }

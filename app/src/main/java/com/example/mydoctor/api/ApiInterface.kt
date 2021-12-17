@@ -15,10 +15,15 @@ interface ApiInterface {
     fun getHospital(
     ): Call<List<HospitalResponse>>
 
-//    @GET("doctor")
-//    fun getDoctors(
-//        @Body hospitalRequest: HospitalRequest
-//    ): Call<List<DoctorResponse>>
+    @POST("register")
+    fun registerUser(
+        @Body registerRequest: RegisterRequest
+    ): Call<RegisterResponse>
+
+    @GET("home")
+    fun getUser(
+        @Query ("token") token : String //query
+    ): Call<UserMessage>
 
     //@Header("Authorization: Bearer <token>" )
 
@@ -30,7 +35,7 @@ interface ApiInterface {
     fun getDates( @Query("email_doc") doctorEmail: String
     ): Call<List<DateAndTimeResponse>>
 
-    @POST("appointment?token={token_id}")
+    @POST("appointment/{token_id}")
     fun sendAppointment (
         @Path("token_id") tokenId:String,
         @Body sendAppointmentRequest: SendAppointmentRequest

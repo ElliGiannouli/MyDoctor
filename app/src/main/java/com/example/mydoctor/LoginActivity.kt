@@ -71,11 +71,12 @@ class LoginActivity : AppCompatActivity() {
                 editor.putString("TOKEN", responseData?.token)
                 editor.apply()
                 val tokenSave =  mypref.getString("TOKEN","")
+                val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                intent.putExtra("Token",tokenSave)
 
                 if(!tokenSave.isNullOrEmpty()) {
                     Toast.makeText(this@LoginActivity,"Successful Login",Toast.LENGTH_LONG).show()
                     Log.d("SuccessLogin","The response is: $responseData")
-                    val intent = Intent(this@LoginActivity,MainActivity::class.java)
                     startActivity(intent)
                 }
                 else{
