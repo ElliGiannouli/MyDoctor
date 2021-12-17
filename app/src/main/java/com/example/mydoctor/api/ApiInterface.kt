@@ -35,9 +35,9 @@ interface ApiInterface {
     fun getDates( @Query("email_doc") doctorEmail: String
     ): Call<List<DateAndTimeResponse>>
 
-    @POST("appointment/{token_id}")
+    @POST("appointment")
     fun sendAppointment (
-        @Path("token_id") tokenId:String,
+        @Query("token") tokenId:String,
         @Body sendAppointmentRequest: SendAppointmentRequest
     ): Call<BookedAppointmentResponse>
 }

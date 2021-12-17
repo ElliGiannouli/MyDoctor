@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_calendar.*
 import com.example.mydoctor.R.layout.*
 import com.example.mydoctor.api.ApiInterface
@@ -183,10 +184,30 @@ class CalendarFragment: Fragment() {
                                             val dateAndTime: String = autocomplete_text_view_date_and_time_dropdown.text.toString().trim()
 
                                             val sharedPrefsTokenCalendar: SharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
-                                            val tokenCalendar = sharedPrefsTokenCalendar.getString("sharedprefstokenCalendar"," ").toString()
+                                            val tokenCalendar = sharedPrefsTokenCalendar.getString("sharedprefstoken"," ").toString()
                                             Log.d("tokenCalendar", "tokenCalendar is: $tokenCalendar")
 
                                             val retrofitDataBookedAppointment = retrofitBuilder.sendAppointment(tokenCalendar,SendAppointmentRequest(doctorEmail,dateAndTime))
+
+                                            retrofitDataBookedAppointment.enqueue(object: Callback<BookedAppointmentResponse>{
+                                                override fun onResponse(call: Call<BookedAppointmentResponse>, response: Response<BookedAppointmentResponse>) {
+
+                                                    val responseBookedAppointment = response.body()!!
+
+                                                    val message: String = responseBookedAppointment.confirmationMessage
+
+                                                    Toast.makeText(activity,"Status: $message", Toast.LENGTH_LONG).show()
+                                                    Log.d("bookingmessage","The booking message is: $message")
+                                                }
+
+                                                override fun onFailure(call: Call<BookedAppointmentResponse>, t: Throwable) {
+
+                                                    Toast.makeText(activity,"Status: Failed",Toast.LENGTH_LONG).show()
+                                                    Log.d("ERRORbooking","Failed at booking:"+t.message)
+
+                                                }
+
+                                            })
 
                                             val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
                                             val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
@@ -209,7 +230,6 @@ class CalendarFragment: Fragment() {
 
                         })
 
-
                     }
 
                     override fun onFailure(call: Call<List<DoctorResponse>>, t: Throwable) {
@@ -230,19 +250,6 @@ class CalendarFragment: Fragment() {
 //        val itemsDates = resources.getStringArray(R.array.dates)
 //        val adapterDate = ArrayAdapter(requireContext(), list_dates, datesList)
 //        binding.autocompleteTextViewDateAndTimeDropdown.setAdapter(adapterDate)
-
-//        binding.bookADateButton.setOnClickListener {
-//
-//            val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
-//            val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
-//            val chosenDateAndTime = autocomplete_text_view_date_and_time_dropdown.text.toString()
-//
-//            val intent = Intent(requireContext(),ConfirmationActivity::class.java)
-//            intent.putExtra("hospital_confirmation",chosenHospital)
-//            intent.putExtra("doctor_confirmation",chosenDoctor)
-//            intent.putExtra("date_and_time_confirmation", chosenDateAndTime)
-//            startActivity(intent)
-//        }
 
         super.onViewCreated(view, savedInstanceState)
     }

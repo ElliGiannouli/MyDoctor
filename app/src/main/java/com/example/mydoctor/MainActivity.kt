@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpTabBar() {
-        var token = intent.getStringExtra("Token")
+        val token = intent.getStringExtra("Token")
         val adapter = TabPageAdapter(activity = this , tabLayout.tabCount ,token.toString())
         viewPager.adapter = adapter
         Log.d("token", "token is in main: $token")
