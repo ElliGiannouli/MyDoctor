@@ -1,6 +1,7 @@
 package com.example.mydoctor
 
 import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -51,12 +52,12 @@ class ProfileFragment() : Fragment() {
             override fun onResponse(call: Call<UserMessage>, response: Response<UserMessage>) {
                if (response.isSuccessful){
                    val responseData = response.body()!!
-                   firstNameProfileText.setText(responseData.firstName.toString())
-                   lastNameProfileText.setText(responseData.lastName.toString())
-                   sexProfileText.setText(responseData.sex.toString())
-                   bloodTypeProfileText.setText(responseData.bloodType.toString())
-                   personalDoctorProfileText.setText(responseData.personalDoctor.toString())
-                   amkaProfileText.setText(responseData.amka.toString())
+                   firstNameProfileText.setText("First Name: \n"+responseData.firstName.toString())
+                   lastNameProfileText.setText("Last Name: \n" +responseData.lastName.toString())
+                   sexProfileText.setText("Sex: \n" +responseData.sex.toString())
+                   bloodTypeProfileText.setText("Blood Type: \n" +responseData.bloodType.toString())
+                   personalDoctorProfileText.setText("Personal Doctor: \n" +responseData.personalDoctor.toString())
+                   amkaProfileText.setText("AMKA: \n" +responseData.amka.toString())
 
                    Log.d("Bravo","token einai edw : $token2")
                }
@@ -66,6 +67,7 @@ class ProfileFragment() : Fragment() {
                 Log.e("Error:::","Error "+t!!.message)
             }
         })
+
 
 
         return inflater.inflate(R.layout.fragment_profile, container, false)
