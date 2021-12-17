@@ -52,12 +52,14 @@ class ProfileFragment() : Fragment() {
             override fun onResponse(call: Call<UserMessage>, response: Response<UserMessage>) {
                if (response.isSuccessful){
                    val responseData = response.body()!!
-                   firstNameProfileText.setText("First Name: \n"+responseData.firstName.toString())
-                   lastNameProfileText.setText("Last Name: \n" +responseData.lastName.toString())
+                   firstNameProfileText.setText(responseData.firstName.toString())
+                   lastNameProfileText.setText(responseData.lastName.toString())
                    sexProfileText.setText("Sex: \n" +responseData.sex.toString())
                    bloodTypeProfileText.setText("Blood Type: \n" +responseData.bloodType.toString())
                    personalDoctorProfileText.setText("Personal Doctor: \n" +responseData.personalDoctor.toString())
                    amkaProfileText.setText("AMKA: \n" +responseData.amka.toString())
+                   dateProfileText.setText("Date: \n" +responseData.date.toString())
+                   emailProfileText.setText("E-mail: \n" +responseData.email.toString())
 
                    Log.d("Bravo","token einai edw : $token2")
                }
