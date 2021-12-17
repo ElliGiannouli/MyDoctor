@@ -41,12 +41,6 @@ class CalendarFragment: Fragment() {
         binding = FragmentCalendarBinding.inflate(layoutInflater)
 
         return binding.root
-
-        val sharedPrefsTokenCalendar: SharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
-        val tokenCalendar = sharedPrefsTokenCalendar.getString("sharedprefstokenCalendar"," ").toString()
-        Log.d("tokenCalendar", "tokenCalendar is: $tokenCalendar")
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -188,7 +182,11 @@ class CalendarFragment: Fragment() {
 
                                             val dateAndTime: String = autocomplete_text_view_date_and_time_dropdown.text.toString().trim()
 
-                                            val retrofitDataBookedAppointment = retrofitBuilder.sendAppointment(sendAppointmentRequest(doctorEmail,dateAndTime))
+                                            val sharedPrefsTokenCalendar: SharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+                                            val tokenCalendar = sharedPrefsTokenCalendar.getString("sharedprefstokenCalendar"," ").toString()
+                                            Log.d("tokenCalendar", "tokenCalendar is: $tokenCalendar")
+
+                                            val retrofitDataBookedAppointment = retrofitBuilder.sendAppointment(tokenCalendar,SendAppointmentRequest(doctorEmail,dateAndTime))
 
                                             val chosenHospital = autocomplete_text_view_hospital_dropdown.text.toString()
                                             val chosenDoctor = autocomplete_text_view_doctor_dropdown.text.toString()
