@@ -20,6 +20,7 @@
     <string name="string_code">Code</string>
     <string name="string_category">Category</string>
     <string name="string_isi">isi</string>
+    <string name="user_profile">USER PROFILE</string>
     <string-array name="hospitals">
         <item>Ippokrateio General Hospital of Athens</item>
         <item>Evangelismos General Hospital of Athens</item>
