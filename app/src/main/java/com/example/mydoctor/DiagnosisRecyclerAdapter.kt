@@ -16,7 +16,7 @@ class DiagnosisRecyclerAdapter(private val list: MutableList<DiagnosisResponse>)
         fun bindItem(item:DiagnosisResponse){
 
             itemKode.text=item.id
-            itemKode.text=item.diagnoses
+            itemKode.text=item.diagnosis
             itemKode.text=item.diagnosis_prescription
             itemKode.text=item.amka_user
             itemKode.text=item.doctor_email

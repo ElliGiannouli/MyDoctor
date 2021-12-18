@@ -31,8 +31,22 @@ class TabPageAdapter (activity:FragmentActivity, private val tabCount: Int ,priv
                 calendarFragment.arguments = calendarBundle
                 CalendarFragment()
                 }
-            2 -> DiagnosisFragment()
-            3 -> PrescriptionsFragment()
+            2 -> {
+                val diagnosisFragment = DiagnosisFragment()
+                val diagnosisBundle = Bundle()
+                diagnosisBundle.putString("tokenDiagnosis", token)
+                Log.d("diagnosistoken", "token is in adapter in diagnosis fragment : $token")
+                diagnosisFragment.arguments = diagnosisBundle
+                DiagnosisFragment()
+                }
+            3 -> {
+                val prescriptionsFragment = PrescriptionsFragment()
+                val prescriptionsBundle = Bundle()
+                prescriptionsBundle.putString("tokenPrescriptions", token)
+                Log.d("diagnosistoken", "token is in adapter in diagnosis fragment : $token")
+                prescriptionsFragment.arguments = prescriptionsBundle
+                PrescriptionsFragment()
+                }
             else -> {
                 val fragment = ProfileFragment()
                 val args = Bundle()

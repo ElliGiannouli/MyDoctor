@@ -22,7 +22,7 @@ interface ApiInterface {
 
     @GET("home")
     fun getUser(
-        @Query ("token") token : String //query
+        @Query ("token") token: String //query
     ): Call<UserMessage>
 
     //@Header("Authorization: Bearer <token>" )
@@ -40,4 +40,14 @@ interface ApiInterface {
         @Query("token") tokenId:String,
         @Body sendAppointmentRequest: SendAppointmentRequest
     ): Call<BookedAppointmentResponse>
+
+    @GET("diagnosis")
+    fun getDiagnosis(
+        @Query("token") token: String
+    ): Call<DiagnosisResponse>
+
+    @GET("prescriptions")
+    fun getPrescriptions(
+        @Query("token") token: String
+    ): Call<PrescriptionsResponse>
 }

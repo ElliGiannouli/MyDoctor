@@ -10,7 +10,7 @@ data class DiagnosisResponse(
 
     @Expose
     @SerializedName("diagnosis")
-    val diagnoses: String,
+    val diagnosis: String,
 
     @Expose
     @SerializedName("diagnosis_prescription")

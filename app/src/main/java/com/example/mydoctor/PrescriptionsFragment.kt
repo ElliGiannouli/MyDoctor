@@ -12,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-const val PRE_URL = "https://docappmy.heroku.com/mydoctor/prescriptions"
+const val BASE_URL_4 = "https://docappmy.heroku.com/mydoctor/"
 
 class PrescriptionsFragment : Fragment() {
 
