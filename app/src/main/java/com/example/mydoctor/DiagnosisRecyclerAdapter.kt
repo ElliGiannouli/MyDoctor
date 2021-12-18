@@ -17,7 +17,7 @@ class DiagnosisRecyclerAdapter(private val list: MutableList<DiagnosisResponse>)
 
             itemKode.text=item.id
             itemKode.text=item.diagnosis
-            itemKode.text=item.diagnosis_prescription
+            itemKode.text=item.diagnosis_description
             itemKode.text=item.amka_user
             itemKode.text=item.doctor_email
         }

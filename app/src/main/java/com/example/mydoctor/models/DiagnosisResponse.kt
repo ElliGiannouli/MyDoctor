@@ -13,8 +13,8 @@ data class DiagnosisResponse(
     val diagnosis: String,
 
     @Expose
-    @SerializedName("diagnosis_prescription")
-    val diagnosis_prescription:String,
+    @SerializedName("diagnosis_description")
+    val diagnosis_description:String,
 
     @Expose
     @SerializedName("amka_user")
