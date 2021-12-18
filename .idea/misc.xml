@@ -29,11 +29,12 @@
         <entry key="..\:/Users/jimsi/AndroidStudioProjects/MyDoctor/app/src/main/res/layout/list_hospitals.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/jimsi/AndroidStudioProjects/MyDoctor/app/src/main/res/layout/list_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/jimsi/AndroidStudioProjects/MyDoctor/app/src/main/res/layout/list_times.xml" value="0.17300724637681159" />
-        <entry key="..\:/skg.code programs/MyDoctor2/app/src/main/res/layout/cardview_layout.xml" value="0.1" />
+        <entry key="..\:/skg.code programs/MyDoctor2/app/src/main/res/layout/activity_login.xml" value="0.18" />
+        <entry key="..\:/skg.code programs/MyDoctor2/app/src/main/res/layout/cardview_layout.xml" value="0.33" />
         <entry key="..\:/skg.code programs/MyDoctor2/app/src/main/res/layout/fragment_diagnoses.xml" value="0.33" />
         <entry key="..\:/skg.code programs/MyDoctor2/app/src/main/res/layout/fragment_prescriptions.xml" value="0.1" />
         <entry key="..\:/skg.code programs/MyDoctor2/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
-        <entry key="..\:/skg.code programs/MyDoctor2/app/src/main/res/layout/fragment_recycler_view.xml" value="0.22" />
+        <entry key="..\:/skg.code programs/MyDoctor2/app/src/main/res/layout/fragment_recycler_view.xml" value="0.33" />
         <entry key="..\:/skg.code programs/MyDoctor2/app/src/main/res/layout/frame_layout.xml" value="0.1" />
       </map>
     </option>

@@ -13,7 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDoctor">
         <activity
-            android:name=".RecyclerAdapter"
+            android:name=".models.PrescriptionsResponce"
+            android:exported="false" />
+        <activity
+            android:name=".models.DiagnosesResponce"
+            android:exported="false" />
+        <activity
+            android:name=".DiagnosisRecyclerAdapter"
             android:exported="false"
             tools:ignore="Instantiatable" />
         <activity
