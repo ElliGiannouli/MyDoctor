@@ -6,34 +6,50 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.mydoctor.models.PrescriptionsResponse
 import kotlinx.android.synthetic.main.frame_layout.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class PrescriptionsFragment: Fragment() {
+const val PRE_URL = "https://docappmy.heroku.com/mydoctor/prescriptions"
+
+class PrescriptionsFragment : Fragment() {
 
 
-
-    private var layoutManager: RecyclerView.LayoutManager? = null
-    private var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
+    //  private var layoutManager: RecyclerView.LayoutManager? =null
+    //  private var adapterDiagnosis: RecyclerView.Adapter<PrescriptionsRecyclerAdapter.ViewHolder>? =
+    //      null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
+
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recycler_view, container, false)
     }
 
+
+
+
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
+        val getPrescriptionsList = mutableListOf<PrescriptionsResponse>()
+
+
         recycler_view.apply {
-            // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
             layoutManager = LinearLayoutManager(activity)
             // set the custom adapter to the RecyclerView
-            adapter = RecyclerAdapter()
+            adapter = PrescriptionsRecyclerAdapter(getPrescriptionsList)
+
+
+
+
+
         }
     }
-
-
 }
