@@ -33,8 +33,13 @@
         <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/activity_register.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/cardview_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/fragment_calendar.xml" value="0.4" />
+        <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/fragment_diagnoses.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/fragment_prescriptions.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/fragment_recycler_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/jimsi/StudioProjects/MyDoctor/app/src/main/res/layout/frame_layout.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

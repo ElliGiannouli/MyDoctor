@@ -31,7 +31,7 @@ class TabPageAdapter (activity:FragmentActivity, private val tabCount: Int ,priv
                 calendarFragment.arguments = calendarBundle
                 CalendarFragment()
                 }
-            2 -> DiagnosesFragment()
+            2 -> DiagnosisFragment()
             3 -> PrescriptionsFragment()
             else -> {
                 val fragment = ProfileFragment()
