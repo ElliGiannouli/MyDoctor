@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class PrescriptionsRequest(
 
-    val id: String,
+    val user_id: String,
 
 
     val amka_user: String,

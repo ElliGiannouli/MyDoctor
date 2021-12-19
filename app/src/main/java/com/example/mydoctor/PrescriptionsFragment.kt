@@ -6,54 +6,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mydoctor.models.PrescriptionsResponse
-import kotlinx.android.synthetic.main.frame_layout.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.recyclerview.widget.RecyclerView
+import com.example.mydoctor.PrescriptionsRecyclerAdapter
+import com.example.mydoctor.R
+import kotlinx.android.synthetic.main.fragment_prescriptions.*
+import kotlinx.android.synthetic.main.fragment_pre_recyclerview.*
+import kotlinx.android.synthetic.main.frame_pre_layout.*
 
-
+/**
+ * A simple [Fragment] subclass.
+ */
 class PrescriptionsFragment : Fragment() {
 
-
-  //  private var layoutManager: RecyclerView.LayoutManager? =null
-  //  private var adapterDiagnosis: RecyclerView.Adapter<PrescriptionsRecyclerAdapter.ViewHolder>? =
-  //      null
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private var adapter: RecyclerView.Adapter<PrescriptionsRecyclerAdapter.ViewHolder>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
-
     ): View? {
-
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recycler_view, container, false)
+        return inflater.inflate(R.layout.fragment_prescriptions, container, false)
     }
-
-
-
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        val getPrescriptionsList = mutableListOf<PrescriptionsResponse>()
-
-
         recycler_view.apply {
+            // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
             layoutManager = LinearLayoutManager(activity)
             // set the custom adapter to the RecyclerView
-            adapter = PrescriptionsRecyclerAdapter(getPrescriptionsList)
-
-
-
-
-
+            adapter = PrescriptionsRecyclerAdapter()
         }
     }
 }
-
-
-
-
-

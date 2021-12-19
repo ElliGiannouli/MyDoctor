@@ -6,8 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class PrescriptionsResponse(
 
     @Expose
-    @SerializedName("id")
-    val id: String,
+    @SerializedName("user_id")
+    val user_id: String,
 
     @Expose
     @SerializedName("amka_user")
