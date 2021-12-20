@@ -44,13 +44,19 @@ class RegisterActivity : AppCompatActivity() {
             email = emailRegisterText.text.toString().trim()
             personalDoctor = personalDoctorRegisterText.text.toString().trim()
 
+            // validations for register
 
             if (amka.isEmpty()) {
                 amkaRegisterText.error = "AMKA required"
                 amkaRegisterText.requestFocus()
                 return@setOnClickListener
             }
-            if (amka.length< 11) {
+            if (amka.length < 11) {
+                amkaRegisterText.error = "AMKA must be 11 numbers"
+                amkaRegisterText.requestFocus()
+                return@setOnClickListener
+            }
+            if (amka.length > 11) {
                 amkaRegisterText.error = "AMKA must be 11 numbers"
                 amkaRegisterText.requestFocus()
                 return@setOnClickListener
@@ -60,13 +66,18 @@ class RegisterActivity : AppCompatActivity() {
                 passwordRegisterText.requestFocus()
                 return@setOnClickListener
             }
+            if (password.length<6) {
+                passwordRegisterText.error = "Select a Password over 6 characters"
+                passwordRegisterText.requestFocus()
+                return@setOnClickListener
+            }
             if (firstName.isEmpty()) {
-                firstNameRegisterText.error = "AMKA required"
+                firstNameRegisterText.error = "First Name required"
                 firstNameRegisterText.requestFocus()
                 return@setOnClickListener
             }
             if (lastName.isEmpty()) {
-                lastNameRegisterText.error = "LastName required"
+                lastNameRegisterText.error = "Last Name required"
                 lastNameRegisterText.requestFocus()
                 return@setOnClickListener
             }
@@ -91,7 +102,7 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
+            // register call for user creation
 
             val retrofitBuilder = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
@@ -100,7 +111,7 @@ class RegisterActivity : AppCompatActivity() {
                 .create(ApiInterface::class.java)
 
             val retrofitData = retrofitBuilder.registerUser(RegisterRequest
-                (amka,password,firstName, lastName,bloodType,sex,email,personalDoctor))
+                (amka,password,firstName,lastName,bloodType,sex,email,personalDoctor))
 
             retrofitData.enqueue(object: Callback<RegisterResponse> {
                 override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {

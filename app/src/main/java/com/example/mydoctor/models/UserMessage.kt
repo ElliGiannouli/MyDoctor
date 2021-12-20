@@ -21,7 +21,6 @@ data class UserMessage(
     val amka: String,
     @SerializedName("date")
     val date: String,
-    @SerializedName("e-mail")
     val email: String,
     @SerializedName("id")
     val id: String

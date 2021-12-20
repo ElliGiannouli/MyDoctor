@@ -13,6 +13,7 @@ import com.example.mydoctor.api.ApiInterface
 import com.example.mydoctor.models.LoginRequest
 import com.example.mydoctor.models.LoginResponse
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_register.*
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -31,16 +32,12 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-//        val loginbtm = findViewById<TextView>(R.id.loginbtm)
-//        loginbtm.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java);
-//            startActivity(intent)
-//
-//        }
 
         val loginbutton = loginbtm
         var amka = ""
         var password = ""
+
+
 
         loginbutton.setOnClickListener {
 
@@ -49,7 +46,19 @@ class LoginActivity : AppCompatActivity() {
 
             Log.d("values","The AMKA is: $amka, The password is: $password")
 
+            // validations for log in
 
+            if (amka.isEmpty()) {
+                amkaRegisterText.error = "AMKA required"
+                amkaRegisterText.requestFocus()
+                return@setOnClickListener
+            }
+
+            if (password.isEmpty()) {
+                passwordRegisterText.error = "Password required"
+                passwordRegisterText.requestFocus()
+                return@setOnClickListener
+            }
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -61,16 +70,28 @@ class LoginActivity : AppCompatActivity() {
 
         retrofitData.enqueue(object:Callback<LoginResponse>{
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+
                 val responseData = response.body()
                 Log.d("SuccessLogin","The response is: $responseData")
                 val intent = Intent(this@LoginActivity,MainActivity::class.java)
                 intent.putExtra("Token", responseData?.token.toString())
                 startActivity(intent)
 
+                if (responseData != null) {
+                    if(responseData.equals(null) ) {
+                        Toast.makeText(this@LoginActivity,"Successful Login",Toast.LENGTH_LONG).show()
+                        Log.d("SuccessLogin","The response is: $responseData")
+                        startActivity(intent)
+                    } else{
+                        Toast.makeText(this@LoginActivity,"Login Failed",Toast.LENGTH_LONG).show()
+                    }
+                }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+
                 Toast.makeText(this@LoginActivity,"FailureLogin",Toast.LENGTH_LONG).show()
+
                 Log.d("loginerror","loginerror: ${t.localizedMessage} - ${t.stackTrace} - ${t.message}")
             }
 
