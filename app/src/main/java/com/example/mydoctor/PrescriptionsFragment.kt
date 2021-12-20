@@ -15,7 +15,6 @@ import com.example.mydoctor.databinding.FragmentPrescriptionsBinding
 import com.example.mydoctor.models.PrescriptionsResponse
 import kotlinx.android.synthetic.main.cardview_layout_prescriptions.*
 import kotlinx.android.synthetic.main.fragment_prescriptions.*
-
 import kotlinx.android.synthetic.main.frame_layout.*
 import kotlinx.android.synthetic.main.frame_layout.recycler_view
 import retrofit2.Call
@@ -24,7 +23,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL_4 = "https://docappmy.heroku.com/mydoctor/"
+const val BASE_URL_4 = "https://docappmy.herokuapp.com/mydoctor/"
 
 class PrescriptionsFragment : Fragment() {
 
@@ -37,30 +36,16 @@ class PrescriptionsFragment : Fragment() {
 
         super.onCreate(savedInstanceState)
 
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(R.layout.fragment_prescriptions, container, false)
 
-        recycler_view_prescriptions.setHasFixedSize(true)
-        linearLayoutManager = LinearLayoutManager(activity)
-        recycler_view_prescriptions.layoutManager = linearLayoutManager
     }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-
-        val getDiagnosesList= mutableListOf<PrescriptionsResponse>()
-
-//        recycler_view.apply {
-//            // set a LinearLayoutManager to handle Android
-//            // RecyclerView behavior
-//            layoutManager = LinearLayoutManager(activity)
-//            // set the custom adapter to the RecyclerView
-//            adapter = PrescriptionsRecyclerAdapter(getDiagnosesList)
-//        }
 
         val sharedPrefsToken2: SharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
         val tokenPrescriptions = sharedPrefsToken2.getString("sharedprefstoken"," ").toString()
@@ -72,22 +57,25 @@ class PrescriptionsFragment : Fragment() {
             .build()
             .create(ApiInterface::class.java)
 
-
-
         val retrofitDataPrescriptions = retrofitBuilder.getPrescriptions(tokenPrescriptions)
 
         retrofitDataPrescriptions.enqueue(object: Callback<List<PrescriptionsResponse>?> {
             override fun onResponse(call: Call<List<PrescriptionsResponse>?>, response: Response<List<PrescriptionsResponse>?>) {
 
                 val responseBodyPrescriptions = response.body()!!
+                Log.d("responsebodyprescriptions","Response Body prescriptions is: $responseBodyPrescriptions")
+
+                recycler_view_prescriptions.setHasFixedSize(true)
+                linearLayoutManager = LinearLayoutManager(activity)
+                recycler_view_prescriptions.layoutManager = linearLayoutManager
 
                 prescriptionsRecyclerAdapter = context?.let { PrescriptionsRecyclerAdapter(it,responseBodyPrescriptions) }!!
-                prescriptionsRecyclerAdapter.notifyDataSetChanged()
+                //prescriptionsRecyclerAdapter.notifyDataSetChanged()
                 recycler_view_prescriptions.adapter = prescriptionsRecyclerAdapter
 
             }
             override fun onFailure(call: Call<List<PrescriptionsResponse>?>, t: Throwable) {
-                Log.d("Prescriptions Fragment","onFailure:" + t.message)
+                Log.d("PrescriptionsFragment","onFailure:" + t.message)
 
             }
         })

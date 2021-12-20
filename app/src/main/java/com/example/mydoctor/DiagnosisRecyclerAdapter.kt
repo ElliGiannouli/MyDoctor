@@ -34,28 +34,15 @@ class DiagnosisRecyclerAdapter(val context: Context, private val diagnosisList:L
             diagnosis_description.text=item.diagnosis_description
             doctor_email.text=item.doctor_email
 
-            Log.d("onholder","on holder item $item")
+            Log.d("onholderdiagnosis","on holderdiagnosis item $item")
 
         }
-
-//        var itemKode: TextView = itemView.findViewById(R.id.text_view_diagnosis)
-//        fun bindItem(item:DiagnosisResponse){
-//
-//            itemKode.text=item.id
-//            itemKode.text=item.diagnosis
-//            itemKode.text=item.diagnosis_description
-//            itemKode.text=item.amka_user
-//            itemKode.text=item.doctor_email
-//        }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
 
-//        val itemView = LayoutInflater.from(context).inflate(R.layout.cardview_layout_diagnosis,parent,false)
-//        return ViewHolder(itemView)
-        val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.cardview_layout_diagnosis, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.cardview_layout_diagnosis, parent, false)
         return ViewHolder(v)
     }
 

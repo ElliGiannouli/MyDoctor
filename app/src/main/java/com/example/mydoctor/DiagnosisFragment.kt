@@ -47,17 +47,6 @@ class DiagnosisFragment : Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
 
-
-        val getDiagnosesList= mutableListOf<DiagnosisResponse>()
-
-//        recycler_view.apply {
-//            // set a LinearLayoutManager to handle Android
-//            // RecyclerView behavior
-//            layoutManager = LinearLayoutManager(activity)
-//            // set the custom adapter to the RecyclerView
-//            adapter = DiagnosisRecyclerAdapter(getDiagnosesList)
-//        }
-
         val sharedPrefsToken2: SharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
         val tokenDiagnosis = sharedPrefsToken2.getString("sharedprefstoken"," ").toString()
         Log.d("tokenDiagnosis", "tokenDiagnosis is: $tokenDiagnosis")
@@ -75,9 +64,11 @@ class DiagnosisFragment : Fragment() {
 
                 val responseBodyDiagnosis = response.body()!!
                 Log.d("responsebodydiagnosis","Response Body diagnosis is: $responseBodyDiagnosis")
+
                 recycler_view_diagnosis.setHasFixedSize(true)
                 linearLayoutManager = LinearLayoutManager(activity)
                 recycler_view_diagnosis.layoutManager = linearLayoutManager
+
                 diagnosisRecyclerAdapter = context?.let { DiagnosisRecyclerAdapter(it,responseBodyDiagnosis) }!!
                // diagnosisRecyclerAdapter.notifyDataSetChanged()
                 recycler_view_diagnosis.adapter = diagnosisRecyclerAdapter
