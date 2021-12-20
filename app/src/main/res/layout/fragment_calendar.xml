@@ -14,9 +14,7 @@
         android:layout_height="97dp"
         android:id="@+id/imageViewProfile"
         android:src="@drawable/profilelogo"
-        android:layout_gravity="left"
-        />
-
+        android:layout_gravity="left" />
 
     <TextView
         android:id="@+id/calendar_text"

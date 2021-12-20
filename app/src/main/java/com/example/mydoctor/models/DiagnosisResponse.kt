@@ -4,23 +4,18 @@ import com.google.gson.annotations.SerializedName
 
 data class DiagnosisResponse(
 
-    @Expose
-    @SerializedName("id")
+    @SerializedName("_id")
     val id: String,
 
-    @Expose
     @SerializedName("diagnosis")
     val diagnosis: String,
 
-    @Expose
     @SerializedName("diagnosis_description")
     val diagnosis_description:String,
 
-    @Expose
     @SerializedName("amka_user")
     val amka_user: String,
 
-    @Expose
     @SerializedName("doctor_email")
     val doctor_email: String
 

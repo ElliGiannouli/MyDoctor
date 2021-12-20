@@ -5,24 +5,19 @@ import com.google.gson.annotations.SerializedName
 
 data class PrescriptionsResponse(
 
-    @Expose
-    @SerializedName("id")
+    @SerializedName("_id")
     val id: String,
 
-    @Expose
     @SerializedName("amka_user")
     val amka_user: String,
 
-    @Expose
-    @SerializedName("description")
-    val description: String,
+    @SerializedName("prescription")
+    val prescriptions: String,
 
-    @Expose
-    @SerializedName("email_doc")
-    val email_doc: String,
+    @SerializedName("doctor_email")
+    val doctor_email: String,
 
-    @Expose
-    @SerializedName("fullname_doc")
-    val fullname_doc: String
+    @SerializedName("prescription_description")
+    val prescriptions_description: String
 
 )

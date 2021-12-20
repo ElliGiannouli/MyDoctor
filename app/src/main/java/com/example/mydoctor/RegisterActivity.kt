@@ -50,7 +50,7 @@ class RegisterActivity : AppCompatActivity() {
                 amkaRegisterText.requestFocus()
                 return@setOnClickListener
             }
-            if (amka.length< 11) {
+            if (amka.length != 11) {
                 amkaRegisterText.error = "AMKA must be 11 numbers"
                 amkaRegisterText.requestFocus()
                 return@setOnClickListener
@@ -60,13 +60,20 @@ class RegisterActivity : AppCompatActivity() {
                 passwordRegisterText.requestFocus()
                 return@setOnClickListener
             }
+
+            if (password.length < 6) {
+                passwordRegisterText.error = "Password must be longer than 6 characters"
+                passwordRegisterText.requestFocus()
+                return@setOnClickListener
+            }
+
             if (firstName.isEmpty()) {
-                firstNameRegisterText.error = "AMKA required"
+                firstNameRegisterText.error = "First Name required"
                 firstNameRegisterText.requestFocus()
                 return@setOnClickListener
             }
             if (lastName.isEmpty()) {
-                lastNameRegisterText.error = "LastName required"
+                lastNameRegisterText.error = "Last Name required"
                 lastNameRegisterText.requestFocus()
                 return@setOnClickListener
             }
@@ -76,7 +83,7 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             if (sex.isEmpty()) {
-                sexRegisterText.error = "Sex required"
+                sexRegisterText.error = "Gender required"
                 sexRegisterText.requestFocus()
                 return@setOnClickListener
             }

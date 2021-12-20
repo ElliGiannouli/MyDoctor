@@ -7,20 +7,31 @@
     android:background="@drawable/mainbackground"
     tools:context=".RegisterActivity">
 
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="97dp"
+        android:id="@+id/imageViewProfile"
+        android:src="@drawable/profilelogo"
+        android:layout_gravity="left" />
 
     <TextView
-        android:layout_marginTop="100dp"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="50dp"
         android:padding="20dp"
-        android:text="Please fill your personal data below"
+        android:text="@string/please_fill_your_personal_data_below"
         android:textSize="20dp" />
 
     <ScrollView
         android:id="@+id/ScrollView"
-        android:layout_marginTop="170dp"
         android:layout_width="match_parent"
-        android:layout_height="470dp">
+        android:layout_height="400dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +48,8 @@
                 android:background="#F0F8FF"
                 android:drawableLeft="@drawable/ic_outline_email_24"
                 android:drawablePadding="20dp"
-                android:hint="AMKA"
+                android:hint="@string/amka"
+                android:inputType="number"
                 android:padding="20dp" />
 
             <EditText
@@ -50,7 +62,8 @@
                 android:background="#F0F8FF"
                 android:drawableLeft="@drawable/ic_outline_lock_24"
                 android:drawablePadding="20dp"
-                android:hint="Password"
+                android:hint="@string/password"
+                android:inputType="textPassword"
                 android:padding="20dp"
                 android:textColor="@color/black" />
 
@@ -64,7 +77,7 @@
                 android:background="#F0F8FF"
                 android:drawableLeft="@drawable/ic_outline_account_circle_24"
                 android:drawablePadding="20dp"
-                android:hint="First Name"
+                android:hint="@string/first_name"
                 android:padding="20dp"
                 android:textColor="@color/black" />
 
@@ -78,7 +91,7 @@
                 android:background="#F0F8FF"
                 android:drawableLeft="@drawable/ic_outline_account_circle_24"
                 android:drawablePadding="20dp"
-                android:hint="Last Name"
+                android:hint="@string/last_name"
                 android:padding="20dp" />
 
             <EditText
@@ -89,9 +102,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#F0F8FF"
-                android:drawablePadding="20dp"
                 android:drawableLeft="@drawable/ic_outline_email_24"
-                android:hint="e-mail"
+                android:drawablePadding="20dp"
+                android:hint="@string/email"
                 android:padding="20dp" />
 
             <EditText
@@ -103,7 +116,7 @@
                 android:layout_marginTop="10dp"
                 android:background="#F0F8FF"
                 android:drawablePadding="20dp"
-                android:hint="Sex"
+                android:hint="@string/gender"
                 android:padding="20dp" />
 
             <EditText
@@ -115,7 +128,7 @@
                 android:layout_marginTop="10dp"
                 android:background="#F0F8FF"
                 android:drawablePadding="20dp"
-                android:hint="Blood Type"
+                android:hint="@string/blood_type"
                 android:padding="20dp" />
 
             <EditText
@@ -127,7 +140,7 @@
                 android:layout_marginTop="10dp"
                 android:background="#F0F8FF"
                 android:drawablePadding="20dp"
-                android:hint="Personal Doctor"
+                android:hint="@string/personal_doctor"
                 android:padding="20dp" />
 
 
@@ -142,7 +155,7 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="#5d8aa6"
-                android:text="Register" />
+                android:text="@string/register" />
 
 
         </LinearLayout>

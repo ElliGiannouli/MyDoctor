@@ -35,13 +35,6 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-//        val loginbtm = findViewById<TextView>(R.id.loginbtm)
-//        loginbtm.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java);
-//            startActivity(intent)
-//
-//        }
-
         val loginbutton = loginbtm
         var amka = ""
         var password = ""
@@ -53,7 +46,17 @@ class LoginActivity : AppCompatActivity() {
 
             Log.d("values","The AMKA is: $amka, The password is: $password")
 
+            if (amka.isEmpty()) {
+                amkaRegisterText.error = "AMKA required"
+                amkaRegisterText.requestFocus()
+                return@setOnClickListener
+            }
 
+            if (password.isEmpty()) {
+                passwordRegisterText.error = "Password required"
+                passwordRegisterText.requestFocus()
+                return@setOnClickListener
+            }
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())

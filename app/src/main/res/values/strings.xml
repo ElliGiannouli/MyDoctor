@@ -12,15 +12,31 @@
     <string name="calendar_tab">Calendar</string>
     <string name="diagnoses_tab">Diagnoses</string>
     <string name="prescriptions_tab">Prescriptions</string>
-    <string name="share_prescriptions">SHARE PRESCRIPTIONS</string>
-    <string name="share_diagnoses">SHARE DIAGNOSES</string>
+    <string name="prescriptions">PRESCRIPTIONS</string>
+    <string name="diagnoses">DIAGNOSES</string>
     <string name="delete">Delete</string>
     <string name="upload_a_file">Upload a file</string>
     <string name="save">Save</string>
     <string name="string_code">Code</string>
+    <string name="doctor_email">Doctor Email</string>
+    <string name="diagnosis">Diagnosis</string>
+    <string name="diagnosis_description">Diagnosis Description</string>
+    <string name="prescription">Prescription</string>
+    <string name="prescription_description">Prescription Description</string>
     <string name="string_category">Category</string>
     <string name="string_isi">isi</string>
     <string name="user_profile">USER PROFILE</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="password">Password</string>
+    <string name="amka">AMKA</string>
+    <string name="email">E-mail</string>
+    <string name="gender">Gender</string>
+    <string name="blood_type">Blood Type</string>
+    <string name="personal_doctor">Personal Doctor</string>
+    <string name="register">REGISTER</string>
+    <string name="please_fill_your_personal_data_below">Please fill your personal data below</string>
+    <string name="personal_data">PERSONAL DATA</string>
     <string-array name="hospitals">
         <item>Ippokrateio General Hospital of Athens</item>
         <item>Evangelismos General Hospital of Athens</item>

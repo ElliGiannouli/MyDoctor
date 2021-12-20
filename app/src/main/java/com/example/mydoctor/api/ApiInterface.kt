@@ -44,10 +44,10 @@ interface ApiInterface {
     @GET("diagnosis")
     fun getDiagnosis(
         @Query("token") token: String
-    ): Call<DiagnosisResponse>
+    ): Call<List<DiagnosisResponse>>
 
     @GET("perscriptions")
     fun getPrescriptions(
         @Query("token") token: String
-    ): Call<PrescriptionsResponse>
+    ): Call<List<PrescriptionsResponse>>
 }

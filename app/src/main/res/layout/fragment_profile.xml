@@ -16,50 +16,37 @@
         android:layout_gravity="left"
         />
 
-
     <TextView
-        android:id="@+id/user_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="120dp"
-        android:gravity="top"
-        android:text="@string/user_profile" />
+        android:id="@+id/userprofile_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="200dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/user_profile"
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/firstNameProfileText"
-            android:layout_width="174dp"
+            android:id="@+id/nameProfileText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#5d8aa6"
             android:lines="2"
             android:paddingStart="10dp"
             android:singleLine="false"
-            android:textAlignment="textStart"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/lastNameProfileText"
-            android:layout_width="216dp"
-            android:layout_height="wrap_content"
-            android:background="#5d8aa6"
-            android:lines="2"
-            android:singleLine="false"
-            android:textAlignment="textStart"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="15dp"
+            android:gravity="center"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -68,8 +55,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="325dp"
         android:orientation="horizontal">
 
         <TextView
@@ -81,7 +68,7 @@
             android:paddingStart="10dp"
             android:singleLine="false"
             android:textAlignment="textStart"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
             android:layout_width="35dp"
@@ -96,7 +83,7 @@
             android:lines="2"
             android:paddingStart="10dp"
             android:singleLine="false"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -104,25 +91,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="370dp"
         android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/amkaProfileText"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="#F0F8FF"
-            android:lines="2"
-            android:paddingStart="10dp"
-            android:singleLine="false"
-            android:textAlignment="textStart"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="36dp"
-            android:layout_height="38dp" />
 
         <TextView
             android:id="@+id/personalDoctorProfileText"
@@ -132,53 +103,80 @@
             android:lines="2"
             android:paddingStart="10dp"
             android:singleLine="false"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
-
-
-
 
     </LinearLayout>
     <LinearLayout
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="500dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/personaldata_text"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20dp"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/personal_data"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="415dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/emailProfileText"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="#F0F8FF"
-            android:lines="2"
-            android:paddingStart="10dp"
-            android:singleLine="false"
-            android:textAlignment="textStart"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="35dp"
-            android:layout_height="38dp"
-            />
-
-        <TextView
-            android:id="@+id/dateProfileText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F0F8FF"
             android:lines="2"
             android:paddingStart="10dp"
             android:singleLine="false"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/amkaProfileText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F0F8FF"
+            android:gravity="center"
+            android:lines="2"
+            android:paddingStart="10dp"
+            android:singleLine="false"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
+
+
 
 
 

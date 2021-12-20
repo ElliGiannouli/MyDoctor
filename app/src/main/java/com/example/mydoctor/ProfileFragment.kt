@@ -30,9 +30,8 @@ class ProfileFragment() : Fragment() {
 
 
         ): View? {
-        var firstName = ""
-        // var token = arguments?.getString("Token2")
-        // Log.d("token", "token is: $token")
+
+        // token from the log in
 
         val sharedPrefsToken2: SharedPreferences = requireActivity().getPreferences(MODE_PRIVATE)
         val token2 = sharedPrefsToken2.getString("sharedprefstoken"," ").toString()
@@ -52,13 +51,11 @@ class ProfileFragment() : Fragment() {
             override fun onResponse(call: Call<UserMessage>, response: Response<UserMessage>) {
                 if (response.isSuccessful){
                     val responseData = response.body()!!
-                    firstNameProfileText.setText(responseData.firstName.toString())
-                    lastNameProfileText.setText(responseData.lastName.toString())
-                    sexProfileText.setText("Sex: \n" +responseData.sex.toString())
+                    nameProfileText.setText(responseData.firstName.toString() + " " + responseData.lastName.toString())
+                    sexProfileText.setText("Gender: \n" +responseData.sex.toString())
                     bloodTypeProfileText.setText("Blood Type: \n" +responseData.bloodType.toString())
                     personalDoctorProfileText.setText("Personal Doctor: \n" +responseData.personalDoctor.toString())
                     amkaProfileText.setText("AMKA: \n" +responseData.amka.toString())
-                    dateProfileText.setText("Date: \n" +responseData.date.toString())
                     emailProfileText.setText("E-mail: \n" +responseData.email.toString())
 
                     Log.d("Bravo","token einai edw : $token2")
